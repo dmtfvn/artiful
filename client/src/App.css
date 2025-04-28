@@ -1,1 +1,34 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
 @import "tailwindcss";
+
+@import './components/header/header.css';
+@import './components/footer/footer.css';
+
+@theme {
+  --color-grayish: hsl(0, 0%, 91%);
+  --color-blackish: hsl(0, 1%, 20%);
+  --color-white: hsl(0, 100%, 100%);
+  --color-black: hsl(0, 100%, 0%);
+
+  --font-roboto: 'Roboto'
+}
+
+@utility flex-center {
+  @apply flex justify-center items-center;
+}
+
+@layer base {
+  html {
+    font-family: var(--font-roboto);
+  }
+
+  a,
+  p {
+    color: var(--color-blackish);
+  }
+}
+
+body {
+  @apply bg-[var(--color-grayish)];
+}

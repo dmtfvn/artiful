@@ -1,0 +1,5 @@
+@layer components {
+  .footer {
+    @apply py-5 border-t-1 border-y-gray-400
+  }
+}
