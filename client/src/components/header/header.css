@@ -1,5 +1,5 @@
 @layer components {
   .header-nav {
-    @apply space-x-15 py-4 border-y-1 border-y-gray-400
+    @apply flex space-x-8 py-2.5 border-y-1 border-y-[var(--color-gy-ish)];
   }
 }

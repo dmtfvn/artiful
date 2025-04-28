@@ -1,7 +1,7 @@
 export default function Footer() {
   return (
     <footer className="footer">
-      <p>
+      <p className="text-[var(--color-white)]">
         Copyright &#169; 2025 &#x2219; <span className="font-bold">artiful</span> &#x2219; All rights reserved
       </p>
     </footer>

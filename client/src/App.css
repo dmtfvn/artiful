@@ -5,11 +5,18 @@
 @import './components/header/header.css';
 @import './components/footer/footer.css';
 
+@import './components/form-input/form-input.css';
+@import './components/form-button/form-button.css';
+
 @theme {
-  --color-grayish: hsl(0, 0%, 91%);
-  --color-blackish: hsl(0, 1%, 20%);
-  --color-white: hsl(0, 100%, 100%);
-  --color-black: hsl(0, 100%, 0%);
+  --color-yt: hsl(0, 100%, 100%);
+  --color-blk: hsl(0, 100%, 0%);
+
+  --color-yt-ish: hsl(0, 0%, 95%);
+  --color-blk-ish: hsl(0, 1%, 20%);
+
+  --color-gy-ish: hsl(0, 0%, 40%);
+  --color-gy-less: hsl(0, 0%, 30%);
 
   --font-roboto: 'Roboto'
 }
@@ -18,17 +25,24 @@
   @apply flex justify-center items-center;
 }
 
+@utility nav-link {
+  @apply px-4 py-1.5 rounded-md bg-[var(--color-gy-less)] hover:bg-[var(--color-gy-ish)];
+}
+
 @layer base {
   html {
     font-family: var(--font-roboto);
   }
 
-  a,
   p {
-    color: var(--color-blackish);
+    color: var(--color-blk-ish);
+  }
+
+  a {
+    color: var(--color-yt-ish);
   }
 }
 
 body {
-  @apply bg-[var(--color-grayish)];
+  @apply bg-[var(--color-blk-ish)];
 }

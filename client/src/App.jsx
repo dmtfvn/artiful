@@ -13,7 +13,7 @@ import Footer from './components/footer/Footer.jsx';
 function App() {
   return (
     <>
-      <div className="min-h-screen flex-center flex-col">
+      <div className="min-h-screen flex-center flex-col px-5">
         <Header />
 
         <main className="flex-center grow">
