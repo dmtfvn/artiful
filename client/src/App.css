@@ -2,9 +2,6 @@
 
 @import "tailwindcss";
 
-@import './components/header/header.css';
-@import './components/footer/footer.css';
-
 @import './components/inputs/form-input.css';
 @import './components/buttons/submit-button.css';
 

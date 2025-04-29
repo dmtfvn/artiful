@@ -12,23 +12,21 @@ import Footer from './components/footer/Footer.jsx';
 
 function App() {
   return (
-    <>
-      <div className="min-h-screen flex-center flex-col px-5">
-        <Header />
+    <div className="min-h-screen flex-center flex-col px-5">
+      <Header />
 
-        <main className="flex-center grow">
-          <Routes>
-            <Route index element={<Home />} />
-            <Route path="/catalog" element={<Catalog />} />
-            <Route path="/create" element={<Create />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/signup" element={<SignUp />} />
-          </Routes>
-        </main>
+      <main className="flex-center grow w-full">
+        <Routes>
+          <Route index element={<Home />} />
+          <Route path="/catalog" element={<Catalog />} />
+          <Route path="/create" element={<Create />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<SignUp />} />
+        </Routes>
+      </main>
 
-        <Footer />
-      </div>
-    </>
+      <Footer />
+    </div>
   )
 }
 

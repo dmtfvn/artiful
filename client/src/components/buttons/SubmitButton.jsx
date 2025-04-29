@@ -4,7 +4,7 @@ export default function SubmitButton({
   return (
     <button
       type="submit"
-      className="button-style"
+      className="submit-button-style"
     >
       {label}
     </button>

@@ -8,7 +8,8 @@ export default function FormInput({
       name={identifier}
       type={identifier === "password" || identifier === "re-password" ? "password" : 'text'}
       placeholder={hint}
-      className="input-style"
+      className="form-input-style"
+      autoComplete="off"
     />
   );
 }
