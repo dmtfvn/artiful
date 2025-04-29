@@ -1,15 +1,14 @@
 import { Link } from 'react-router';
 
-import InputEmail from '../form-input/input-email/InputEmail.jsx';
-import InputPassword from '../form-input/input-password/InputPassword.jsx';
-import ButtonSubmit from '../form-button/ButtonSubmit.jsx';
+import FormInput from '../inputs/FormInput.jsx';
+import SubmitButton from '../buttons/SubmitButton.jsx';
 
 export default function Login() {
   return (
     <>
       <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
         <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-          <h2 className="mt-10 text-center text-2xl/9 font-bold tracking-tight text-gray-600">
+          <h2 className="mt-10 px-5 text-center text-2xl/9 font-bold tracking-tight text-gray-600">
             Enter your login credentials
           </h2>
         </div>
@@ -22,7 +21,7 @@ export default function Login() {
               </label>
 
               <div className="mt-2">
-                <InputEmail />
+                <FormInput identifier="email" />
               </div>
             </div>
 
@@ -32,12 +31,12 @@ export default function Login() {
               </label>
 
               <div className="mt-2">
-                <InputPassword />
+                <FormInput identifier="password" />
               </div>
             </div>
 
             <div>
-              <ButtonSubmit label="Log In" />
+              <SubmitButton label="Log In" />
             </div>
           </form>
 

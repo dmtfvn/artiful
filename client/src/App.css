@@ -5,15 +5,15 @@
 @import './components/header/header.css';
 @import './components/footer/footer.css';
 
-@import './components/form-input/form-input.css';
-@import './components/form-button/form-button.css';
+@import './components/inputs/form-input.css';
+@import './components/buttons/submit-button.css';
 
 @theme {
   --color-yt: hsl(0, 100%, 100%);
   --color-blk: hsl(0, 100%, 0%);
 
   --color-yt-ish: hsl(0, 0%, 95%);
-  --color-blk-ish: hsl(0, 1%, 20%);
+  --color-blk-ish: hsl(0, 0%, 9%);
 
   --color-gy-ish: hsl(0, 0%, 40%);
   --color-gy-less: hsl(0, 0%, 30%);

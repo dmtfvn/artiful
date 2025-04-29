@@ -1,4 +1,4 @@
-export default function ButtonSubmit({
+export default function SubmitButton({
   label
 }) {
   return (
