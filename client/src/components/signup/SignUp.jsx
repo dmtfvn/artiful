@@ -21,7 +21,7 @@ export default function SignUp() {
               </label>
 
               <div className="mt-2">
-                <FormInput identifier="username" />
+                <FormInput identifier="username" hint="Enter username here" />
               </div>
             </div>
 
@@ -31,7 +31,7 @@ export default function SignUp() {
               </label>
 
               <div className="mt-2">
-                <FormInput identifier="email" />
+                <FormInput identifier="email" hint="Enter email here" />
               </div>
             </div>
 
@@ -41,7 +41,7 @@ export default function SignUp() {
               </label>
 
               <div className="mt-2">
-                <FormInput identifier="password" />
+                <FormInput identifier="password" hint="Enter password here" />
               </div>
             </div>
 
@@ -51,7 +51,7 @@ export default function SignUp() {
               </label>
 
               <div className="mt-2">
-                <FormInput identifier="re-password" />
+                <FormInput identifier="re-password" hint="Enter repeated password here" />
               </div>
             </div>
 

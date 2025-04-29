@@ -1,12 +1,13 @@
 export default function FormInput({
-  identifier
+  identifier,
+  hint,
 }) {
   return (
     <input
       id={identifier}
       name={identifier}
-      type={identifier}
-      placeholder={`Enter ${identifier} here`}
+      type={identifier === "password" || identifier === "re-password" ? "password" : 'text'}
+      placeholder={hint}
       className="input-style"
     />
   );

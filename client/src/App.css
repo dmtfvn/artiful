@@ -9,9 +9,6 @@
 @import './components/buttons/submit-button.css';
 
 @theme {
-  --color-yt: hsl(0, 100%, 100%);
-  --color-blk: hsl(0, 100%, 0%);
-
   --color-yt-ish: hsl(0, 0%, 95%);
   --color-blk-ish: hsl(0, 0%, 9%);
 
@@ -25,8 +22,12 @@
   @apply flex justify-center items-center;
 }
 
-@utility nav-link {
+@utility h-nav-link {
   @apply px-4 py-1.5 rounded-md bg-[var(--color-gy-less)] hover:bg-[var(--color-gy-ish)];
+}
+
+@utility m-nav-link {
+  @apply -mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-[var(--color-gy-ish)] hover:bg-zinc-900;
 }
 
 @layer base {

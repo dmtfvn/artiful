@@ -21,7 +21,7 @@ export default function Login() {
               </label>
 
               <div className="mt-2">
-                <FormInput identifier="email" />
+                <FormInput identifier="email" hint="Enter email here" />
               </div>
             </div>
 
@@ -31,7 +31,7 @@ export default function Login() {
               </label>
 
               <div className="mt-2">
-                <FormInput identifier="password" />
+                <FormInput identifier="password" hint="Enter password here" />
               </div>
             </div>
 
