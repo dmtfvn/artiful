@@ -6,14 +6,14 @@ import SubmitButton from '../buttons/SubmitButton.jsx';
 export default function SignUp() {
   return (
     <div className="flex max-w-[17.5em] flex-1 flex-col justify-center py-12">
-      <h2 className="mt-10 text-center text-2xl/9 font-bold text-gray-600">
+      <h2 className="mb-10 text-center text-2xl/9 font-bold text-gray-600">
         Create a new account
       </h2>
 
-      <div className="mt-10">
+      <div>
         <form action="#" className="space-y-9">
           <div>
-            <label htmlFor="username" className="block text-sm/6 font-medium text-white">
+            <label htmlFor="username" className="block text-sm/6 font-medium text-white/80">
               Username
             </label>
 
@@ -23,7 +23,7 @@ export default function SignUp() {
           </div>
 
           <div>
-            <label htmlFor="email" className="block text-sm/6 font-medium text-white">
+            <label htmlFor="email" className="block text-sm/6 font-medium text-white/80">
               Email
             </label>
 
@@ -33,7 +33,7 @@ export default function SignUp() {
           </div>
 
           <div>
-            <label htmlFor="password" className="block text-sm/6 font-medium text-white">
+            <label htmlFor="password" className="block text-sm/6 font-medium text-[var(--color-yt-ish)]">
               Password
             </label>
 
@@ -43,7 +43,7 @@ export default function SignUp() {
           </div>
 
           <div>
-            <label htmlFor="re-password" className="block text-sm/6 font-medium text-white">
+            <label htmlFor="re-password" className="block text-sm/6 font-medium text-[var(--color-yt-ish)]">
               Repeat password
             </label>
 
@@ -59,7 +59,7 @@ export default function SignUp() {
 
         <p className="mt-10 text-center text-sm/6 text-gray-500">
           Already have an account?{' '}
-          <Link to="/login" className="font-semibold text-gray-400 hover:text-gray-300">
+          <Link to="/login" className="font-semibold text-sky-600">
             Log In
           </Link>
         </p>

@@ -6,14 +6,14 @@ import SubmitButton from '../buttons/SubmitButton.jsx';
 export default function Login() {
   return (
     <div className="flex max-w-[17.5em] flex-1 flex-col justify-center py-12">
-      <h2 className="mt-10 text-center text-2xl/9 font-bold text-gray-600">
+      <h2 className="mb-10 text-center text-2xl/9 font-bold text-gray-600">
         Sign in your account
       </h2>
 
-      <div className="mt-10">
+      <div>
         <form action="#" className="space-y-9">
           <div>
-            <label htmlFor="email" className="block text-sm/6 font-medium text-white">
+            <label htmlFor="email" className="block text-sm/6 font-medium text-white/80">
               Email
             </label>
 
@@ -23,7 +23,7 @@ export default function Login() {
           </div>
 
           <div>
-            <label htmlFor="password" className="block text-sm/6 font-medium text-white">
+            <label htmlFor="password" className="block text-sm/6 font-medium text-white/80">
               Password
             </label>
 
@@ -39,7 +39,7 @@ export default function Login() {
 
         <p className="mt-10 text-center text-sm/6 text-gray-500">
           Don&#39;t have an account?{' '}
-          <Link to="/signup" className="font-semibold text-gray-400 hover:text-gray-300">
+          <Link to="/signup" className="font-semibold text-sky-600">
             Sign Up here
           </Link>
         </p>

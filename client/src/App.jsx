@@ -3,11 +3,14 @@ import { Routes, Route } from 'react-router';
 import './App.css';
 
 import Header from './components/header/Header.jsx';
+
 import Home from './components/home/Home.jsx';
 import Catalog from './components/catalog/Catalog.jsx';
 import Create from './components/create/Create.jsx';
+import Profile from './profile/Profile.jsx';
 import Login from './components/login/Login.jsx';
 import SignUp from './components/signup/SignUp.jsx';
+
 import Footer from './components/footer/Footer.jsx';
 
 function App() {
@@ -20,6 +23,7 @@ function App() {
           <Route index element={<Home />} />
           <Route path="/catalog" element={<Catalog />} />
           <Route path="/create" element={<Create />} />
+          <Route path="/profile" element={<Profile />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
         </Routes>

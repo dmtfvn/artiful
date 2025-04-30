@@ -8,14 +8,14 @@ const navigation = [
   { name: 'Home', path: '/' },
   { name: 'Catalog', path: '/catalog' },
   { name: 'Create', path: '/create' },
-  { name: 'Logout', path: '/logout' },
+  { name: 'Profile', path: '/profile' },
 ];
 
 export default function Header() {
   const [toggleMobile, setToggleMobile] = useState(false);
 
   return (
-    <header className="flex-center flex-col">
+    <header className="flex-center flex-col mb-10">
       <div className="flex-center max-w-[15em] h-auto py-5">
         <Link to="/">
           <img src="/logos/artiful-white.png" alt="artiful-logo" />
@@ -52,7 +52,7 @@ export default function Header() {
         </div>
       </nav>
 
-      <Dialog open={toggleMobile} onClose={setToggleMobile} className="lg:hidden">
+      <Dialog open={toggleMobile} onClose={setToggleMobile} className="md:hidden">
         <DialogPanel
           className="fixed inset-y-0 left-0 z-50 w-full overflow-y-auto bg-black p-6 sm:max-w-sm">
           <div className="flex justify-self-end">

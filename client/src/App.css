@@ -12,7 +12,7 @@
   --color-gy-ish: hsl(0, 0%, 40%);
   --color-gy-less: hsl(0, 0%, 30%);
 
-  --font-roboto: 'Roboto'
+  --font-roboto: 'Roboto';
 }
 
 @utility flex-center {
@@ -20,7 +20,7 @@
 }
 
 @utility h-nav-link {
-  @apply px-4 py-1.5 rounded-md bg-[var(--color-gy-less)] hover:bg-[var(--color-gy-ish)];
+  @apply px-4 py-1.5 rounded-md bg-black/25 hover:bg-black/55;
 }
 
 @utility m-nav-link {
