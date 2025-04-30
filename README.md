@@ -18,4 +18,14 @@ This repo contains a project for the course **JS React** @ **SoftUni**
 
 <br>
 
+### Check project current state:
+
+>Navigate to client folder, and execute the command:
+
+```
+npm run dev
+```
+
+<br>
+
 Project status - `under development`
