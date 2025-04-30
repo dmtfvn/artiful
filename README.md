@@ -6,7 +6,7 @@ This repo contains a project for the course **JS React** @ **SoftUni**
 
 ### Course project defence:
 
->SPA about reating artistic cards, and building a collection
+>SPA about creating artistic cards, and building a collection
 
 **Used technologies:**
 >*ReactJS* -:- Library for web applications

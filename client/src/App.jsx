@@ -5,7 +5,7 @@ import './App.css';
 import Header from './components/header/Header.jsx';
 
 import Home from './components/home/Home.jsx';
-import Catalog from './components/catalog/Catalog.jsx';
+import Gallery from './components/gallery/Gallery.jsx';
 import Create from './components/create/Create.jsx';
 import Profile from './profile/Profile.jsx';
 import Login from './components/login/Login.jsx';
@@ -21,7 +21,7 @@ function App() {
       <main className="flex-center grow w-full">
         <Routes>
           <Route index element={<Home />} />
-          <Route path="/catalog" element={<Catalog />} />
+          <Route path="/gallery" element={<Gallery />} />
           <Route path="/create" element={<Create />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/login" element={<Login />} />

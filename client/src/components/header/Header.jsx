@@ -6,7 +6,7 @@ import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 
 const navigation = [
   { name: 'Home', path: '/' },
-  { name: 'Catalog', path: '/catalog' },
+  { name: 'Gallery', path: '/gallery' },
   { name: 'Create', path: '/create' },
   { name: 'Profile', path: '/profile' },
 ];
@@ -16,9 +16,9 @@ export default function Header() {
 
   return (
     <header className="flex-center flex-col mb-10">
-      <div className="flex-center max-w-[15em] h-auto py-5">
+      <div className="flex-center max-w-[12em] h-auto py-5">
         <Link to="/">
-          <img src="/logos/artiful-white.png" alt="artiful-logo" />
+          <img src="/logo.png" alt="artiful-logo" />
         </Link>
       </div>
 
@@ -31,16 +31,18 @@ export default function Header() {
           </button>
         </div>
 
-        <div className="hidden md:flex md:gap-x-12">
-          {navigation.map((item) => (
-            <Link
-              key={item.name}
-              to={item.path}
-              className="h-nav-link"
-            >
-              {item.name}
-            </Link>
-          ))}
+        <div className="hidden md:flex md:gap-x-18">
+          <div className="flex gap-6">
+            {navigation.map((item) => (
+              <Link
+                key={item.name}
+                to={item.path}
+                className="h-nav-link"
+              >
+                {item.name}
+              </Link>
+            ))}
+          </div>
 
           <div className="flex-center">
             <Link to="/login" className="h-nav-link">Log In</Link>
