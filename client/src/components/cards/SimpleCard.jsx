@@ -1,12 +1,12 @@
 import { Link } from 'react-router';
 
-export default function HomeCard({
+export default function SimpleCard({
   image,
 }) {
   return (
-    <div className="group relative w-[12em]">
-      <h3 className="card-hover-show-text">
-        Art name of some really cool images
+    <div className="max-w-[12em] w-full">
+      <h3 className="max-w-full whitespace-nowrap truncate overflow-hidden text-[var(--color-yt-ish)] px-3 pb-1">
+        Really cool image name
       </h3>
 
       <div className="border-1 border-[var(--color-gy-ish)] rounded-lg overflow-hidden">

@@ -11,11 +11,13 @@ import Profile from './profile/Profile.jsx';
 import Login from './components/login/Login.jsx';
 import SignUp from './components/signup/SignUp.jsx';
 
+import NotFound from './components/404/NotFound.jsx';
+
 import Footer from './components/footer/Footer.jsx';
 
 function App() {
   return (
-    <div className="min-h-screen flex-center flex-col px-5">
+    <div className="min-h-screen flex-center flex-col px-2.5">
       <Header />
 
       <main className="flex-center grow w-full">
@@ -26,6 +28,7 @@ function App() {
           <Route path="/profile" element={<Profile />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<SignUp />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
 
