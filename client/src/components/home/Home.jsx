@@ -3,18 +3,18 @@ import SimpleCard from '../cards/SimpleCard.jsx';
 export default function Home() {
   return (
     <section className="flex-center flex-col max-w-full">
-      <div className="max-w-[35em] w-full">
-        <h1 className="text-4xl text-center text-stone-400 mt-15">
-          Eager to show your art?
+      <div className="flex-center flex-col max-w-[40em] w-full mt-20 px-5">
+        <p className="text-4xl text-gradient-l text-center font-light">
+          Eager to show your art, but wonder where to put it?
+        </p>
+
+        <p className="text-[1em] text-[var(--color-gy-ish)] my-5">&#x2919; &#x291A;</p>
+
+        <h1 className="text-5xl text-center text-gradient-r font-semibold">
+          This is the place.
         </h1>
 
-        <p className="text-4xl text-center text-stone-400 mt-15">
-          Wonder where to put it?
-        </p>
-
-        <p className="text-4xl text-center text-stone-400 mt-15">
-          This is the place.
-        </p>
+        <p className="text-[2em] text-[var(--color-gy-ish)] my-5">&#x2193;</p>
       </div>
 
       <div className="max-w-[55em] w-full py-10 divide-y divide-black">

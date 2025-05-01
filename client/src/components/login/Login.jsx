@@ -6,9 +6,9 @@ import SubmitButton from '../buttons/SubmitButton.jsx';
 export default function Login() {
   return (
     <div className="flex max-w-[17.5em] flex-1 flex-col justify-center py-12">
-      <h2 className="mb-10 text-center text-2xl/9 font-bold text-gray-600">
+      <h1 className="mb-10 text-center text-2xl/9 font-bold text-sky-800">
         Sign in your account
-      </h2>
+      </h1>
 
       <div>
         <form action="#" className="space-y-9">
