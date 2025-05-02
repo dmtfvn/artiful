@@ -37,7 +37,7 @@ export default function Header() {
               <Link
                 key={item.name}
                 to={item.path}
-                className="h-nav-link"
+                className="header-nav-link"
               >
                 {item.name}
               </Link>
@@ -45,11 +45,11 @@ export default function Header() {
           </div>
 
           <div className="flex-center">
-            <Link to="/login" className="h-nav-link">Log In</Link>
+            <Link to="/login" className="header-nav-link">Log In</Link>
 
             <p className="text-[var(--color-gy-ish)] mx-0.5">|</p>
 
-            <Link to="/signup" className="h-nav-link">Sign Up</Link>
+            <Link to="/signup" className="header-nav-link">Sign Up</Link>
           </div>
         </div>
       </nav>
@@ -72,7 +72,7 @@ export default function Header() {
                   <Link
                     key={item.name}
                     to={item.path}
-                    className="m-nav-link"
+                    className="mobile-nav-link"
                     onClick={() => setToggleMobile(false)}
                   >
                     {item.name}
@@ -82,14 +82,14 @@ export default function Header() {
 
               <div className="flex flex-col pt-6">
                 <Link to="/login"
-                  className="m-nav-link"
+                  className="mobile-nav-link"
                   onClick={() => setToggleMobile(false)}
                 >
                   Log In
                 </Link>
 
                 <Link to="/signup"
-                  className="m-nav-link"
+                  className="mobile-nav-link"
                   onClick={() => setToggleMobile(false)}
                 >
                   Sign Up

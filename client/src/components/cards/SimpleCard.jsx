@@ -5,9 +5,9 @@ export default function SimpleCard({
 }) {
   return (
     <div className="max-w-[12em] w-full">
-      <h3 className="max-w-full whitespace-nowrap truncate overflow-hidden text-[var(--color-yt-ish)] px-3 pb-1">
-        Really cool image name
-      </h3>
+      <h1 className="max-w-full whitespace-nowrap truncate overflow-hidden text-[var(--color-yt-ish)] px-3 pb-1">
+        Really amazing image name
+      </h1>
 
       <div className="border-1 border-[var(--color-gy-ish)] rounded-lg overflow-hidden">
         <img

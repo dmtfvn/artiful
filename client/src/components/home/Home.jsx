@@ -28,7 +28,7 @@ export default function Home() {
           <div className="flex items-center justify-evenly flex-wrap max-w-[43em] w-full min-h-[19em] shadow-card-slot rounded-2xl p-4 gap-10">
             <SimpleCard image="https://wallpaperaccess.com/full/1490234.jpg" />
 
-            <SimpleCard image="https://usabilitygeek.com/wp-content/uploads/2018/07/white-space-improve-usability-web-designs-lead.jpg" />
+            <SimpleCard image="https://palmettowebdesign.com/wp-content/uploads/2015/08/White-Space.jpg" />
 
             <SimpleCard image="https://i.pinimg.com/736x/c1/2c/a7/c12ca701ca2fc38111f374336af00b7d.jpg" />
           </div>

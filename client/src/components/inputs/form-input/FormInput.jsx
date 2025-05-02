@@ -5,8 +5,8 @@ export default function FormInput({
   return (
     <input
       id={identifier}
-      name={identifier}
       type={identifier === "password" || identifier === "re-password" ? "password" : 'text'}
+      name={identifier}
       placeholder={hint}
       className="form-input-style"
       autoComplete="off"
