@@ -1,11 +1,16 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 
-import SearchInput from '../inputs/search-input/SearchInput.jsx';
+// import { FadeLoader } from 'react-spinners';
 
+import SearchInput from '../inputs/search-input/SearchInput.jsx';
 import SimpleCard from '../cards/SimpleCard.jsx';
 
+// import { useArts } from '../../api/artApi.js';
+
 export default function Gallery() {
+  // const { arts, loading } = useArts();
+
   return (
     <section className="flex flex-col max-w-[84em] w-full">
       <h1 className="text-3xl text-center text-black/75 font-bold mt-20 text-shadow-xs text-shadow-stone-800">
