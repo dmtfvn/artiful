@@ -5,7 +5,12 @@ export default function FormInput({
   return (
     <input
       id={identifier}
-      type={identifier === "password" || identifier === "re-password" ? "password" : 'text'}
+      type={identifier === "password" || identifier === "re-password"
+        ?
+        "password"
+        :
+        'text'
+      }
       name={identifier}
       placeholder={hint}
       className="form-input-style"

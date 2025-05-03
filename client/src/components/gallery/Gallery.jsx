@@ -8,19 +8,27 @@ import SimpleCard from '../cards/SimpleCard.jsx';
 export default function Gallery() {
   return (
     <section className="flex flex-col max-w-[84em] w-full">
-      <h1 className="text-5xl text-center text-black/75 font-bold mt-20 text-shadow-xs text-shadow-stone-800">
+      <h1 className="text-3xl text-center text-black/75 font-bold mt-20 text-shadow-xs text-shadow-stone-800">
         Check the gallery, or search for something specific.
       </h1>
 
-      <form className="flex-center mt-20">
-        <SearchInput />
+      <form className="flex-center flex-wrap mt-20 mb-4 gap-5">
+        <div className="flex mx-5">
+          <SearchInput />
 
-        <div className="flex-center -ml-1.5 cursor-pointer">
-          <FontAwesomeIcon
-            icon={faMagnifyingGlass}
-            className="bg-stone-800 text-[1em] rounded-r-md text-zinc-600 hover:text-zinc-400 px-3.5 py-2.5"
-          />
+          <button className="flex-center -ml-1.5 cursor-pointer">
+            <FontAwesomeIcon
+              icon={faMagnifyingGlass}
+              className="bg-stone-800 text-[1em] rounded-r-md text-zinc-600 hover:text-zinc-400 px-3.5 py-2.5"
+            />
+          </button>
         </div>
+
+        <select name="select" className="select-style">
+          <option value>choose</option>
+          <option value="art-name">ART NAME</option>
+          <option value="art-creator">ART CREATOR</option>
+        </select>
       </form>
 
       <div className="grid-gallery">

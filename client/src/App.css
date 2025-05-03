@@ -48,6 +48,10 @@
   @apply text-sm/6 font-medium text-[var(--color-gy-ish)];
 }
 
+@utility select-style {
+  @apply max-w-[8em] w-full outline-none text-stone-500 border-y hover:border-y-2 border-stone-700 cursor-pointer py-1;
+}
+
 @layer base {
   html {
     font-family: var(--font-roboto);
