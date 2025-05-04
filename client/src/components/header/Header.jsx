@@ -3,8 +3,8 @@ import { Link } from 'react-router';
 
 import useUserContext from '../../hooks/useUserContext.js';
 
-import HeaderNav from '../naigation/HeaderNav.jsx';
-import MobileNav from '../naigation/MobileNav.jsx';
+import HeaderNav from '../navigation/HeaderNav.jsx';
+import MobileNav from '../navigation/MobileNav.jsx';
 
 export default function Header() {
   const { accessToken } = useUserContext();

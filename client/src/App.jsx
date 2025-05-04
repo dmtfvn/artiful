@@ -20,7 +20,7 @@ import './App.css';
 function App() {
   return (
     <UserProvider>
-      <div className="min-h-screen flex-center flex-col px-2.5">
+      <div className="min-h-screen flex-center flex-col px-5">
         <Header />
 
         <main className="flex-center grow w-full">

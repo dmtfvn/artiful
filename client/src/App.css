@@ -29,7 +29,7 @@
 }
 
 @utility mobile-nav-link {
-  @apply -mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-[var(--color-gy-ish)] hover:bg-zinc-900;
+  @apply -mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-[var(--color-gy-ish)] hover:bg-stone-900;
 }
 
 @utility text-gradient-l {
@@ -49,7 +49,7 @@
 }
 
 @utility select-style {
-  @apply max-w-[8em] w-full outline-none text-stone-500 border-y hover:border-y-2 border-stone-700 cursor-pointer py-1;
+  @apply max-w-[9.5em] w-full p-1.5 outline-none text-stone-500 border-y-2 border-stone-800 hover:bg-black/35 focus:bg-black/35 cursor-pointer;
 }
 
 @layer base {

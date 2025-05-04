@@ -25,7 +25,7 @@ export default function Home() {
         </section>
 
         <section className="flex justify-center py-10">
-          <div className="flex items-center justify-evenly flex-wrap max-w-[43em] w-full min-h-[19em] shadow-card-slot rounded-2xl p-4 gap-10">
+          <div className="flex items-center justify-evenly flex-wrap max-w-[44.5em] w-full min-h-[19em] shadow-card-slot rounded-2xl p-4 gap-13">
             <SimpleCard image="https://wallpaperaccess.com/full/1490234.jpg" />
 
             <SimpleCard image="https://palmettowebdesign.com/wp-content/uploads/2015/08/White-Space.jpg" />
