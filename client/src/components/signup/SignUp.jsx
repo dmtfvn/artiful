@@ -1,10 +1,11 @@
+import { useActionState } from 'react';
 import { Link, useNavigate } from 'react-router';
 
 import FormInput from '../inputs/form-input/FormInput.jsx';
 import SubmitButton from '../buttons/SubmitButton.jsx';
+
 import { useRegister } from '../../api/authApi.js';
 import useUserContext from '../../hooks/useUserContext.js';
-import { useActionState } from 'react';
 
 export default function SignUp() {
   const navigate = useNavigate();
