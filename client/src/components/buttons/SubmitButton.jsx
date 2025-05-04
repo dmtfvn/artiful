@@ -1,10 +1,12 @@
 export default function SubmitButton({
-  label
+  label,
+  pending,
 }) {
   return (
     <button
       type="submit"
       className="submit-button-style"
+      disabled={pending}
     >
       {label}
     </button>

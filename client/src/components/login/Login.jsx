@@ -1,16 +1,50 @@
-import { Link } from 'react-router';
+import { useActionState } from 'react';
+import { Link, useNavigate } from 'react-router';
 
 import FormInput from '../inputs/form-input/FormInput.jsx';
 import SubmitButton from '../buttons/SubmitButton.jsx';
 
+import { useLogin } from '../../api/authApi.js';
+import useUserContext from '../../hooks/useUserContext.js';
+
 export default function Login() {
+  const navigate = useNavigate();
+
+  const { login } = useLogin();
+
+  const { userLogin } = useUserContext();
+
+  const loginHandler = async (_, formData) => {
+    const userData = Object.fromEntries(formData);
+
+    if (Object.values(userData).some(el => el === '')) {
+      console.log('All fields are required!')
+      return;
+    }
+
+    try {
+      const authData = await login(userData.email, userData.password);
+
+      userLogin(authData);
+
+      navigate(-1);
+    } catch (err) {
+      console.log(err.message)
+    }
+  }
+
+  const [, loginAction, isPending] = useActionState(loginHandler, {
+    email: '',
+    password: '',
+  });
+
   return (
     <section className="flex max-w-[17.5em] flex-1 flex-col justify-center py-12">
       <h1 className="mb-10 text-center text-2xl/9 font-bold text-sky-800">
         Sign in your account
       </h1>
 
-      <form action="#" className="space-y-9">
+      <form action={loginAction} className="space-y-9">
         <div>
           <label htmlFor="email" className="label-style">
             Email
@@ -27,7 +61,7 @@ export default function Login() {
           <FormInput identifier="password" hint="Enter password here" />
         </div>
 
-        <SubmitButton label="Log In" />
+        <SubmitButton label="Log In" pending={isPending} />
       </form>
 
       <p className="mt-10 text-center text-sm/6 text-gray-500">

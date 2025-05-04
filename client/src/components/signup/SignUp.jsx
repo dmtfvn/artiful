@@ -1,16 +1,55 @@
-import { Link } from 'react-router';
+import { Link, useNavigate } from 'react-router';
 
 import FormInput from '../inputs/form-input/FormInput.jsx';
 import SubmitButton from '../buttons/SubmitButton.jsx';
+import { useRegister } from '../../api/authApi.js';
+import useUserContext from '../../hooks/useUserContext.js';
+import { useActionState } from 'react';
 
 export default function SignUp() {
+  const navigate = useNavigate();
+
+  const { register } = useRegister();
+
+  const { userLogin } = useUserContext();
+
+  const registerHandler = async (_, formData) => {
+    const userData = Object.fromEntries(formData);
+
+    if (Object.values(userData).some(el => el === '')) {
+      console.log('All fields are required!')
+      return;
+    }
+
+    if (userData['password'] !== userData['re-password']) {
+      console.log('Passwords don\'t match!')
+      return;
+    }
+
+    try {
+      const authData = await register(userData.username, userData.email, userData.password);
+
+      userLogin(authData);
+
+      navigate('/profile');
+    } catch (err) {
+      console.log(err.message)
+    }
+  }
+
+  const [, registerAction, isPending] = useActionState(registerHandler, {
+    username: '',
+    email: '',
+    password: '',
+  });
+
   return (
     <section className="flex max-w-[17.5em] flex-1 flex-col justify-center py-12">
       <h1 className="mb-10 text-center text-2xl/9 font-bold text-sky-800">
         Create a new account
       </h1>
 
-      <form action="#" className="space-y-9">
+      <form action={registerAction} className="space-y-9">
         <div>
           <label htmlFor="username" className="label-style">
             Username
@@ -43,7 +82,7 @@ export default function SignUp() {
           <FormInput identifier="re-password" hint="Enter repeated password here" />
         </div>
 
-        <SubmitButton label="Sign Up" />
+        <SubmitButton label="Sign Up" pending={isPending} />
       </form>
 
       <p className="mt-10 text-center text-sm/6 text-gray-500">
