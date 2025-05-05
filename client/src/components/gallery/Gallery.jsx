@@ -5,6 +5,7 @@ import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 
 import SearchInput from '../inputs/search-input/SearchInput.jsx';
 import SimpleCard from '../cards/SimpleCard.jsx';
+import CustomSelect from '../select/CustomSelect.jsx';
 
 // import { useArts } from '../../api/artApi.js';
 
@@ -18,7 +19,7 @@ export default function Gallery() {
       </h1>
 
       <form className="flex-center flex-wrap mt-20 mb-4 gap-5">
-        <div className="flex mx-5">
+        <div className="flex">
           <SearchInput />
 
           <button className="flex-center -ml-1.5 cursor-pointer">
@@ -29,11 +30,7 @@ export default function Gallery() {
           </button>
         </div>
 
-        <select name="select" className="select-style">
-          <option value>choose</option>
-          <option value="art-name">ART NAME</option>
-          <option value="art-creator">ART CREATOR</option>
-        </select>
+        <CustomSelect />
       </form>
 
       <div className="grid-gallery">
