@@ -4,12 +4,13 @@ import { styles, options } from './CustomSelectProps.js';
 
 export default function CustomSelect() {
   return (
-    <Select
-      styles={styles}
-      options={options}
-      placeholder="choose"
-      isSearchable={false}
-    // menuIsOpen={true}
-    />
+    <div className="max-w-[9.5em] w-full">
+      <Select
+        styles={styles}
+        options={options}
+        placeholder="choose"
+        isSearchable={false}
+      />
+    </div>
   );
 }

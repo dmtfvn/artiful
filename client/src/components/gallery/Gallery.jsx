@@ -18,7 +18,7 @@ export default function Gallery() {
         Check the gallery, or search for something specific.
       </h1>
 
-      <form className="flex-center flex-wrap mt-20 mb-4 gap-5">
+      <form className="flex-center flex-wrap mt-20 mb-4 gap-11">
         <div className="flex">
           <SearchInput />
 

@@ -2,7 +2,8 @@ export const styles = {
   control: (baseStyles) => ({
     ...baseStyles,
     backgroundColor: 'rgba(0, 0, 0, 0.3)',
-    width: '9.5em',
+    width: '100%',
+    minHeight: 0,
     border: 'none',
     borderRadius: '0.375rem',
     boxShadow: 'none',
@@ -25,6 +26,7 @@ export const styles = {
   singleValue: (baseStyles) => ({
     ...baseStyles,
     color: 'rgb(54, 65, 83)',
+    margin: 0,
   }),
   dropdownIndicator: (baseStyles) => ({
     ...baseStyles,
