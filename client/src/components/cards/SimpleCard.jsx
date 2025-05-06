@@ -4,8 +4,8 @@ export default function SimpleCard({
   image,
 }) {
   return (
-    <div className="max-w-[12em] w-full">
-      <h1 className="max-w-full whitespace-nowrap truncate overflow-hidden text-[var(--color-yt-ish)] px-3 pb-1">
+    <section className="max-w-[12em] w-full">
+      <h1 className="w-full whitespace-nowrap truncate overflow-hidden text-[var(--color-yt-ish)] px-3 pb-1">
         Really amazing image name
       </h1>
 
@@ -13,7 +13,7 @@ export default function SimpleCard({
         <img
           className="h-48 w-full object-cover"
           src={image}
-          alt="Home in Countryside"
+          alt=""
         />
 
         <Link to="#">
@@ -22,6 +22,6 @@ export default function SimpleCard({
           </p>
         </Link>
       </div>
-    </div>
+    </section>
   );
 }

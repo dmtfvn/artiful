@@ -20,8 +20,8 @@ export default function Gallery() {
   }
 
   return (
-    <section className="flex flex-col max-w-[84em] w-full">
-      <h1 className="text-3xl text-center text-black/75 font-bold mt-20 text-shadow-xs text-shadow-stone-800">
+    <section className="section-wrapper">
+      <h1 className="text-3xl text-center text-black/75 font-bold mt-20 h1-shadow">
         Check the gallery, or search for something specific.
       </h1>
 

@@ -15,6 +15,9 @@ import Footer from './components/footer/Footer.jsx';
 import Auth from './components/guards/Auth.jsx';
 import Guest from './components/guards/Guest.jsx';
 
+import Created from './components/profile/Created.jsx';
+import Liked from './components/profile/Liked.jsx';
+
 import './App.css';
 
 function App() {
@@ -29,7 +32,11 @@ function App() {
             <Route path="/gallery" element={<Gallery />} />
 
             <Route element={<Auth />}>
-              <Route path="/profile" element={<Profile />} />
+              <Route path="/profile" element={<Profile />}>
+                <Route index element={<Created />} />
+                <Route path="liked" element={<Liked />} />
+              </Route>
+
               <Route path="/logout" element={<Logout />} />
             </Route>
 
