@@ -1,8 +1,16 @@
+import { useState } from 'react';
 import Select from 'react-select';
 
 import { styles, options } from './CustomSelectProps.js';
 
-export default function CustomSelect() {
+export default function CustomSelect({
+  setState,
+}) {
+  const selectHandler = (selectedValue) => {
+    setState(() => selectedValue);
+
+  }
+
   return (
     <div className="max-w-[9.5em] w-full">
       <Select
@@ -10,6 +18,7 @@ export default function CustomSelect() {
         options={options}
         placeholder="choose"
         isSearchable={false}
+        onChange={(val) => selectHandler(val)}
       />
     </div>
   );

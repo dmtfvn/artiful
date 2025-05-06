@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 
@@ -11,6 +12,12 @@ import CustomSelect from '../select/CustomSelect.jsx';
 
 export default function Gallery() {
   // const { arts, loading } = useArts();
+  const [selectOption, setSelectOption] = useState({});
+
+  const searchHandler = (formData) => {
+    console.log(Object.fromEntries(formData))
+    console.log(selectOption)
+  }
 
   return (
     <section className="flex flex-col max-w-[84em] w-full">
@@ -18,7 +25,7 @@ export default function Gallery() {
         Check the gallery, or search for something specific.
       </h1>
 
-      <form className="flex-center flex-wrap mt-20 mb-4 gap-11">
+      <form className="flex-center flex-wrap mt-20 mb-4 gap-11" action={searchHandler}>
         <div className="flex">
           <SearchInput />
 
@@ -30,7 +37,9 @@ export default function Gallery() {
           </button>
         </div>
 
-        <CustomSelect />
+        <CustomSelect
+          setState={setSelectOption}
+        />
       </form>
 
       <div className="grid-gallery">
