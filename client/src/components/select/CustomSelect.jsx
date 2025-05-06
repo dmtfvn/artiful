@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import Select from 'react-select';
 
 import { styles, options } from './CustomSelectProps.js';
@@ -8,7 +7,6 @@ export default function CustomSelect({
 }) {
   const selectHandler = (selectedValue) => {
     setState(() => selectedValue);
-
   }
 
   return (

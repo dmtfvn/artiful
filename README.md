@@ -9,9 +9,19 @@ This repo contains a project for the course **JS React** @ **SoftUni**
 >SPA about creating artistic cards, and building a collection
 
 **Used technologies:**
->*ReactJS* -:- Library for web applications
+>*React JS*
 
->*Tailwind* -:- CSS framework
+>*React Select*
+
+>*React Spinners*
+
+>*Tailwind CSS*
+
+>*Font Awesome*
+
+>*Headless UI*
+
+>*heroicons*
 
 **Used server:**
 >*SoftUni Practice Server* -:- REST service for educational purposes
