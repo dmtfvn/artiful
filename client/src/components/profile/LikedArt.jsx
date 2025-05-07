@@ -1,6 +1,6 @@
 import SimpleCard from '../cards/SimpleCard.jsx';
 
-export default function Liked() {
+export default function LikedArt() {
   return (
     <div className="grid-gallery">
       <SimpleCard image="https://i.pinimg.com/originals/c7/39/b7/c739b7730694ae54a695655dc4583e14.jpg" />

@@ -14,7 +14,7 @@ export default function CustomSelect({
       <Select
         styles={styles}
         options={options}
-        placeholder="choose"
+        placeholder="Search by"
         isSearchable={false}
         onChange={(val) => selectHandler(val)}
       />

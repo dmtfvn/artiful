@@ -1,6 +1,6 @@
 import SimpleCard from '../cards/SimpleCard.jsx';
 
-export default function Created() {
+export default function CreatedArt() {
   return (
     <div className="grid-gallery">
       <SimpleCard image="https://wallpaperaccess.com/full/1490234.jpg" />

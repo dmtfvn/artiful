@@ -35,7 +35,7 @@
 }
 
 @utility profile-link {
-  @apply bg-stone-800 text-white/55 text-center rounded-lg hover:bg-stone-700 px-3 py-2;
+  @apply text-black/75 text-center rounded-lg hover:text-white/55 px-3 py-2;
 }
 
 @utility text-gradient-l {
@@ -47,7 +47,7 @@
 }
 
 @utility hover-gradient {
-  @apply absolute inset-0 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 opacity-0 group-hover:opacity-100 transition-opacity duration-500;
+  @apply absolute inset-0 bg-gradient-to-r from-sky-200 via-orange-200 to-amber-200 opacity-0 group-hover:opacity-100 transition-opacity duration-500;
 }
 
 @utility section-wrapper {
