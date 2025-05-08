@@ -4,8 +4,11 @@
 @import "tailwindcss";
 
 @import './components/inputs/search-input/search-input.css';
-@import './components/inputs/form-input/form-input.css';
-@import './components/buttons/submit-button.css';
+@import './components/inputs/auth-input/auth-input.css';
+@import './components/inputs/main-input.css';
+
+@import './components/buttons/submit-button/submit-button.css';
+@import './components/buttons/main-button.css';
 
 @theme {
   --color-yt-ish: hsl(0, 0%, 95%);

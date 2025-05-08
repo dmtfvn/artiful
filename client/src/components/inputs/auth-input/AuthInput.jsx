@@ -1,4 +1,4 @@
-export default function FormInput({
+export default function AuthInput({
   identifier,
   hint,
 }) {
@@ -13,8 +13,8 @@ export default function FormInput({
       }
       name={identifier}
       placeholder={hint}
-      className="form-input-style"
       autoComplete="off"
+      className="auth-style"
     />
   );
 }

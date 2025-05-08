@@ -1,14 +1,18 @@
 export default function ImagePreviewInput({
-  urlValue,
+  identifier,
+  valueUrl,
   onChangeUrl,
 }) {
   return (
     <input
+      id={identifier}
       type="text"
-      value={urlValue}
+      name={identifier}
+      value={valueUrl}
       onChange={onChangeUrl}
       placeholder="Paste image URL here"
-      className="form-input-style"
+      autoComplete="off"
+      className="main-input-style"
     />
   );
 }

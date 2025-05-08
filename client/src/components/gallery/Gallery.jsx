@@ -25,7 +25,7 @@ export default function Gallery() {
         Check the gallery, or search for something specific.
       </h1>
 
-      <form className="flex-center flex-wrap mt-20 mb-4 gap-11" action={searchHandler}>
+      <form action={searchHandler} className="flex-center flex-wrap mt-20 mb-4 gap-11">
         <div className="flex">
           <SearchInput />
 
@@ -37,9 +37,7 @@ export default function Gallery() {
           </button>
         </div>
 
-        <CustomSelect
-          setState={setSelectOption}
-        />
+        <CustomSelect setState={setSelectOption} />
       </form>
 
       <div className="grid-gallery">

@@ -1,8 +1,8 @@
 import { useActionState } from 'react';
 import { Link, useNavigate } from 'react-router';
 
-import FormInput from '../inputs/form-input/FormInput.jsx';
-import SubmitButton from '../buttons/SubmitButton.jsx';
+import AuthInput from '../inputs/auth-input/AuthInput.jsx';
+import SubmitButton from '../buttons/submit-button/SubmitButton.jsx';
 
 import { useRegister } from '../../api/authApi.js';
 import useUserContext from '../../hooks/useUserContext.js';
@@ -56,7 +56,7 @@ export default function SignUp() {
             Username
           </label>
 
-          <FormInput identifier="username" hint="Enter username here" />
+          <AuthInput identifier="username" hint="Enter username here" />
         </div>
 
         <div>
@@ -64,7 +64,7 @@ export default function SignUp() {
             Email
           </label>
 
-          <FormInput identifier="email" hint="Enter email here" />
+          <AuthInput identifier="email" hint="Enter email here" />
         </div>
 
         <div>
@@ -72,7 +72,7 @@ export default function SignUp() {
             Password
           </label>
 
-          <FormInput identifier="password" hint="Enter password here" />
+          <AuthInput identifier="password" hint="Enter password here" />
         </div>
 
         <div>
@@ -80,10 +80,14 @@ export default function SignUp() {
             Repeat password
           </label>
 
-          <FormInput identifier="re-password" hint="Enter repeated password here" />
+          <AuthInput identifier="re-password" hint="Enter repeated password here" />
         </div>
 
-        <SubmitButton label="Sign Up" pending={isPending} />
+        <SubmitButton
+          style="submit-style"
+          pending={isPending}
+          label="Sign Up"
+        />
       </form>
 
       <p className="mt-10 text-center text-sm/6 text-gray-500">

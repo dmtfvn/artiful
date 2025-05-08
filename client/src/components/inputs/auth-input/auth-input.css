@@ -1,5 +1,5 @@
 @layer components {
-  .form-input-style {
+  .auth-style {
     @apply w-full rounded-md px-3 py-1.5 text-base text-[var(--color-yt-ish)] outline-1 -outline-offset-1 outline-[var(--color-gy-ish)] placeholder:text-gray-700 focus:outline-2 focus:-outline-offset-2 focus:outline-sky-500
   }
 }
