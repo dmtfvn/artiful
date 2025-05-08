@@ -62,9 +62,9 @@ export default function Login() {
         </div>
 
         <SubmitButton
-          style="submit-style"
-          pending={isPending}
           label="Log In"
+          pending={isPending}
+          style="submit-style"
         />
       </form>
 

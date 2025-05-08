@@ -84,9 +84,9 @@ export default function SignUp() {
         </div>
 
         <SubmitButton
-          style="submit-style"
-          pending={isPending}
           label="Sign Up"
+          pending={isPending}
+          style="submit-style"
         />
       </form>
 
