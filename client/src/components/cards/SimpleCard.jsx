@@ -1,19 +1,20 @@
 import { Link } from 'react-router';
 
 export default function SimpleCard({
-  image,
+  title,
+  imageUrl,
 }) {
   return (
-    <section className="max-w-[12em] w-full">
-      <h1 className="w-full whitespace-nowrap truncate overflow-hidden text-[var(--color-yt-ish)] px-3 pb-1">
-        Really amazing image name
+    <section className="flex flex-col max-w-[12em] w-full h-[17em]">
+      <h1 className="w-full text-center whitespace-nowrap truncate overflow-hidden text-[var(--color-yt-ish)] px-3">
+        {title}
       </h1>
 
-      <div className="border-1 border-[var(--color-gy-ish)] rounded-lg overflow-hidden">
+      <div className="border-1 border-[var(--color-gy-ish)] rounded-lg overflow-hidden mt-auto">
         <img
           className="h-48 w-full object-cover"
-          src={image}
-          alt=""
+          src={imageUrl}
+          alt={title}
         />
 
         <Link to="#">
