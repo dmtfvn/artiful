@@ -21,7 +21,7 @@ export const useArts = () => {
 
   return {
     arts,
-    loading
+    loading,
   };
 }
 
@@ -67,7 +67,7 @@ export const useLatest = () => {
 
   return {
     latest,
-    loading
+    loading,
   };
 }
 
@@ -91,7 +91,7 @@ export const useEdit = () => {
   }
 
   return {
-    edit
+    edit,
   };
 }
 
@@ -104,5 +104,31 @@ export const useDelete = () => {
 
   return {
     del,
+  };
+}
+
+export const useCreatedArt = () => {
+  const { _id } = useUserContext();
+
+  const [created, setCreated] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    setLoading(true);
+
+    const searchParams = new URLSearchParams({
+      where: `_ownerId="${_id}"`,
+    });
+
+    request.get(`${url}?${searchParams.toString()}`)
+      .then(data => {
+        setCreated(data);
+        setLoading(false);
+      });
+  }, [_id]);
+
+  return {
+    created,
+    loading,
   };
 }

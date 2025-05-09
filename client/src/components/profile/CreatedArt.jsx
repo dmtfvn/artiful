@@ -1,13 +1,34 @@
 import SimpleCard from '../cards/SimpleCard.jsx';
 
+import { useCreatedArt } from '../../api/crudApi.js';
+
+import Spinner from '../spinner/Spinner.jsx';
+import EmptySpaceMsg from '../empty-space-msg/EmptySpaceMsg.jsx';
+
 export default function CreatedArt() {
+  const { created, loading } = useCreatedArt();
+
   return (
-    <div className="grid-gallery">
-      <SimpleCard image="https://wallpaperaccess.com/full/1490234.jpg" />
+    <div className="relative grid-gallery">
+      {loading &&
+        <Spinner />
+      }
 
-      <SimpleCard image="https://palmettowebdesign.com/wp-content/uploads/2015/08/White-Space.jpg" />
+      {created.map(a => (
+        <SimpleCard
+          key={a._id}
+          {...a}
+        />
+      ))}
 
-      <SimpleCard image="https://i.pinimg.com/736x/c1/2c/a7/c12ca701ca2fc38111f374336af00b7d.jpg" />
+      {!loading && !created.length
+        ?
+        <EmptySpaceMsg
+          message="Your creations will appear here."
+        />
+        :
+        null
+      }
     </div>
   );
 }
