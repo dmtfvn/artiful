@@ -52,16 +52,20 @@ export default function Create() {
   }
 
   const [, actionCreate, isPending] = useActionState(createHandler, {
-    ['image-url']: '',
-    ['art-name']: '',
-    ['art-creator']: '',
-    ['check']: 'off',
-    ['description']: '',
+    imageUrl: '',
+    title: '',
+    creator: '',
+    check: '',
+    description: '',
   });
 
   return (
     <section className="flex max-w-[25em] flex-1 flex-col shadow-card-slot rounded-2xl justify-center my-20">
-      <h1 className="text-center text-2xl font-semibold text-gradient-l my-5">
+      <p className="text-center text-4xl pt-4 text-gradient-l">
+        &#10022;
+      </p>
+
+      <h1 className="text-center text-2xl font-semibold text-gradient-l my-4">
         Create something beautiful
       </h1>
 
@@ -76,31 +80,31 @@ export default function Create() {
         </div>
 
         <div>
-          <label htmlFor="image-url" className="label-style">
+          <label htmlFor="imageUrl" className="label-style">
             Image url
           </label>
 
           <ImagePreviewInput
-            identifier="image-url"
+            identifier="imageUrl"
             valueUrl={imageUrl}
             onChangeUrl={inputChangeHandler}
           />
         </div>
 
         <div>
-          <label htmlFor="art-name" className="label-style">
+          <label htmlFor="title" className="label-style">
             Art name
           </label>
 
-          <MainInput identifier="art-name" hint="Enter art name here" />
+          <MainInput identifier="title" hint="Enter art name here" />
         </div>
 
         <div>
-          <label htmlFor="art-creator" className="label-style">
+          <label htmlFor="creator" className="label-style">
             Art creator
           </label>
 
-          <MainInput identifier="art-creator" hint="Enter your alias here" />
+          <MainInput identifier="creator" hint="Enter your alias here" />
         </div>
 
         <label htmlFor="check-box" className="flex items-center gap-2 text-white/65">
@@ -111,12 +115,12 @@ export default function Create() {
             className="accent-gray-700 size-4"
           />
 
-          Include your email in this art
+          Include your email
         </label>
 
         <div className="flex flex-col">
           <label htmlFor="text-area" className="label-style">
-            Describe your art
+            Describe your thoughts {"(optional)"}
           </label>
 
           <textarea
@@ -128,7 +132,7 @@ export default function Create() {
         </div>
 
         <SubmitButton
-          label="Create it !"
+          label="Create"
           pending={isPending}
           style="main-button-style"
         />
