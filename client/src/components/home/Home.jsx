@@ -28,8 +28,9 @@ export default function Home() {
         <section className="flex justify-center py-10">
           <div className="relative flex-center max-w-[14em] w-full min-h-[19em] shadow-card-slot rounded-2xl px-4">
             {/* <SimpleCard image="https://idsb.tmgrup.com.tr/ly/uploads/images/2020/10/13/64827.jpg" /> */}
+
             <EmptySpaceMsg
-              message="For the one with most likes"
+              message="For the one with the most likes"
             />
           </div>
         </section>
@@ -50,7 +51,7 @@ export default function Home() {
             {!loading && !latest.length
               ?
               <EmptySpaceMsg
-                message="Latest three additions will show up here"
+                message="The latest three additions will show up here"
               />
               :
               null

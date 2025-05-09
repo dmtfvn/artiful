@@ -2,16 +2,17 @@ import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 
-// import { FadeLoader } from 'react-spinners';
-
 import SearchInput from '../inputs/search-input/SearchInput.jsx';
 import SimpleCard from '../cards/SimpleCard.jsx';
 import CustomSelect from '../select/CustomSelect.jsx';
 
-// import { useArts } from '../../api/artApi.js';
+import { useArts } from '../../api/crudApi.js';
+
+import Spinner from '../spinner/Spinner.jsx';
+import EmptySpaceMsg from '../empty-space-msg/EmptySpaceMsg.jsx';
 
 export default function Gallery() {
-  // const { arts, loading } = useArts();
+  const { arts, loading } = useArts();
   const [selectOption, setSelectOption] = useState({});
 
   const searchHandler = (formData) => {
@@ -40,20 +41,26 @@ export default function Gallery() {
         <CustomSelect setState={setSelectOption} />
       </form>
 
-      <div className="grid-gallery">
-        <SimpleCard image="https://wallpaperaccess.com/full/1490234.jpg" />
+      <div className="relative grid-gallery">
+        {loading &&
+          <Spinner />
+        }
 
-        <SimpleCard image="https://palmettowebdesign.com/wp-content/uploads/2015/08/White-Space.jpg" />
+        {arts.map(a => (
+          <SimpleCard
+            key={a._id}
+            {...a}
+          />
+        ))}
 
-        <SimpleCard image="https://i.pinimg.com/736x/c1/2c/a7/c12ca701ca2fc38111f374336af00b7d.jpg" />
-
-        <SimpleCard image="https://diggingpress.com/wp-content/uploads/2020/02/AdobeStock_276275467-e1581822414196.jpeg" />
-
-        <SimpleCard image="https://freeyork.org/wp-content/uploads/2016/10/cinta-vidal-agullo-1.jpg" />
-
-        <SimpleCard image="https://i.pinimg.com/originals/c7/39/b7/c739b7730694ae54a695655dc4583e14.jpg" />
-
-        <SimpleCard image="https://live.staticflickr.com/65535/52663295353_66d55ca268_b.jpg" />
+        {!loading && !arts.length
+          ?
+          <EmptySpaceMsg
+            message="This place is supposed to be full of art"
+          />
+          :
+          null
+        }
       </div>
     </section>
   );

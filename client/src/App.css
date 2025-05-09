@@ -58,7 +58,7 @@
 }
 
 @utility grid-gallery {
-  @apply grid grid-cols-[repeat(auto-fill,_minmax(0,_192px))] auto-rows-auto justify-evenly min-h-[19em] shadow-card-slot rounded-2xl my-20 p-4 gap-20;
+  @apply grid grid-cols-[repeat(auto-fill,_minmax(0,_12em))] auto-rows-auto justify-evenly min-h-[19em] shadow-card-slot rounded-2xl my-20 p-4 gap-20;
 }
 
 @utility label-style {
