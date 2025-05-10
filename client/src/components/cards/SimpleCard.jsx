@@ -1,6 +1,7 @@
 import { Link } from 'react-router';
 
 export default function SimpleCard({
+  _id,
   title,
   imageUrl,
 }) {
@@ -17,7 +18,7 @@ export default function SimpleCard({
           alt={title}
         />
 
-        <Link to="#">
+        <Link to={`/details/${_id}`}>
           <p className="text-center border-t border-[var(--color-gy-ish)] text-[var(--color-yt-ish)] py-3 hover:bg-black/55">
             Details
           </p>

@@ -6,6 +6,7 @@ import SubmitButton from '../buttons/submit-button/SubmitButton.jsx';
 import ImagePreviewInput from '../inputs/image-preview-input/ImagePreviewInput.jsx';
 
 import { useCreate } from '../../api/crudApi.js';
+import useUserContext from '../../hooks/useUserContext.js';
 
 export default function Create() {
   const [imageUrl, setImageUrl] = useState('');
@@ -15,6 +16,8 @@ export default function Create() {
   const navigate = useNavigate();
 
   const { create } = useCreate();
+
+  const { email } = useUserContext();
 
   const imageErrorHandler = () => {
     setImageError(true);
@@ -42,9 +45,10 @@ export default function Create() {
       return;
     }
 
-    if (!artData.check) {
-      artData.check = 'off';
+    if (artData.check) {
+      artData.email = email;
     }
+    //TODO check on edit
 
     await create(artData);
 

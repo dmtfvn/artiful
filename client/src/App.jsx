@@ -8,10 +8,10 @@ import NotFound from './components/404/NotFound.jsx';
 
 import Home from './components/home/Home.jsx';
 import Gallery from './components/gallery/Gallery.jsx';
+import Details from './components/details/Details.jsx';
 
 import Profile from './components/profile/Profile.jsx';
 import Create from './components/create/Create.jsx';
-import Edit from './components/edit/Edit.jsx';
 import Logout from './components/logout/Logout.jsx';
 
 import Login from './components/login/Login.jsx';
@@ -35,6 +35,7 @@ function App() {
           <Routes>
             <Route index element={<Home />} />
             <Route path="/gallery" element={<Gallery />} />
+            <Route path="/details/:artId" element={<Details />} />
 
             <Route element={<Auth />}>
               <Route path="/profile" element={<Profile />}>
@@ -43,8 +44,6 @@ function App() {
               </Route>
 
               <Route path="/profile/create" element={<Create />} />
-
-              <Route path="/profile/:artId/edit" element={<Edit />} />
 
               <Route path="/logout" element={<Logout />} />
             </Route>

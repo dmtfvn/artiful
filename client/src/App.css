@@ -73,6 +73,14 @@
   @apply text-shadow-xs text-shadow-stone-800;
 }
 
+@utility icon-wrapper-style {
+  @apply m-2 p-2 rounded-full bg-black/20 cursor-pointer hover:bg-black/40;
+}
+
+@utility icon-style {
+  @apply max-w-full aspect-[1/1] w-8 text-gray-700;
+}
+
 @layer base {
   html {
     font-family: var(--font-roboto);
