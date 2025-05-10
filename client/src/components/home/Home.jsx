@@ -1,6 +1,6 @@
 import SimpleCard from '../cards/SimpleCard.jsx';
 
-import { useLatest } from '../../api/crudApi.js';
+import { useLatest } from '../../api/queryApi.js';
 
 import Spinner from '../spinner/Spinner.jsx';
 import EmptySpaceMsg from '../empty-space-msg/EmptySpaceMsg.jsx';

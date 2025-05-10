@@ -45,32 +45,6 @@ export const useArtId = (id) => {
   };
 }
 
-export const useLatest = () => {
-  const [latest, setLatest] = useState([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    setLoading(true);
-
-    const searchParams = new URLSearchParams({
-      sortBy: '_createdOn desc',
-      pageSize: 3,
-      select: 'imageUrl,title,_id'
-    });
-
-    request.get(`${url}?${searchParams.toString()}`)
-      .then(data => {
-        setLatest(data);
-        setLoading(false);
-      });
-  }, []);
-
-  return {
-    latest,
-    loading,
-  };
-}
-
 export const useCreate = () => {
   const { accessToken } = useUserContext();
 
@@ -104,31 +78,5 @@ export const useDelete = () => {
 
   return {
     del,
-  };
-}
-
-export const useCreatedArt = () => {
-  const { _id } = useUserContext();
-
-  const [created, setCreated] = useState([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    setLoading(true);
-
-    const searchParams = new URLSearchParams({
-      where: `_ownerId="${_id}"`,
-    });
-
-    request.get(`${url}?${searchParams.toString()}`)
-      .then(data => {
-        setCreated(data);
-        setLoading(false);
-      });
-  }, [_id]);
-
-  return {
-    created,
-    loading,
   };
 }

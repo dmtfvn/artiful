@@ -107,7 +107,7 @@ export default function Create() {
           <MainInput identifier="creator" hint="Enter your alias here" />
         </div>
 
-        <label htmlFor="check-box" className="flex items-center gap-2 text-white/65">
+        <label htmlFor="check-box" className="inline-flex items-center gap-2 text-white/65">
           <input
             id="check-box"
             name="check"
