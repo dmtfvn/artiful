@@ -40,8 +40,8 @@ export default function Create() {
   const createHandler = async (_, formData) => {
     const artData = Object.fromEntries(formData);
 
-    if (Object.values(artData).some(el => el === '')) {
-      console.log('All fields are required!');
+    if (!artData.title && !artData.creator) {
+      console.log('Image url, Art name and Art creator are required!');
       return;
     }
 

@@ -3,6 +3,10 @@
 
 @import "tailwindcss";
 
+@import '../src/styles/layer-base.css';
+@import '../src/styles/layer-utilities.css';
+@import '../src/styles/utility.css';
+
 @import './components/inputs/search-input/search-input.css';
 @import './components/inputs/auth-input/auth-input.css';
 @import './components/inputs/main-input.css';
@@ -23,80 +27,6 @@
   --shadow-card-slot: inset 0 0 25px rgba(0, 0, 0, 0.55);
 
   --breakpoint-2sm: 18.75em;
-}
-
-@utility flex-center {
-  @apply flex justify-center items-center;
-}
-
-@utility header-nav-link {
-  @apply px-4 py-1.5 rounded-md bg-black/25 hover:bg-black/55;
-}
-
-@utility mobile-nav-link {
-  @apply -mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-[var(--color-gy-ish)] hover:bg-stone-900;
-}
-
-@utility profile-link {
-  @apply text-black/75 text-center rounded-lg hover:text-white/55 px-3 py-2;
-}
-
-@utility text-gradient-l {
-  @apply text-transparent bg-clip-text bg-gradient-to-l to-amber-200 via-rose-200 from-blue-200;
-}
-
-@utility text-gradient-r {
-  @apply text-transparent bg-clip-text bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500;
-}
-
-@utility hover-gradient {
-  @apply absolute inset-0 bg-gradient-to-r from-sky-200 via-orange-200 to-amber-200 opacity-0 group-hover:opacity-100 transition-opacity duration-500;
-}
-
-@utility section-wrapper {
-  @apply flex flex-col max-w-[82em] w-full;
-}
-
-@utility grid-gallery {
-  @apply grid grid-cols-[repeat(auto-fill,_minmax(0,_12em))] auto-rows-auto justify-evenly min-h-[19em] shadow-card-slot rounded-2xl my-20 p-4 gap-20;
-}
-
-@utility label-style {
-  @apply text-sm/6 font-medium text-[var(--color-gy-ish)];
-}
-
-@utility select-style {
-  @apply max-w-[9.5em] w-full p-1.5 outline-none text-stone-500 border-y-2 border-stone-800 hover:bg-black/35 focus:bg-black/35 cursor-pointer;
-}
-
-@utility h1-shadow {
-  @apply text-shadow-xs text-shadow-stone-800;
-}
-
-@utility icon-wrapper-style {
-  @apply m-2 p-2 rounded-full bg-black/20 cursor-pointer hover:bg-black/40;
-}
-
-@utility icon-style {
-  @apply max-w-full aspect-[1/1] w-8 text-gray-700;
-}
-
-@layer base {
-  html {
-    font-family: var(--font-roboto);
-  }
-
-  h1 {
-    font-family: var(--font-palanquin);
-  }
-
-  p {
-    color: var(--color-blk-ish);
-  }
-
-  a {
-    color: var(--color-yt-ish);
-  }
 }
 
 body {

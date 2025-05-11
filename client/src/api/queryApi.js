@@ -41,6 +41,7 @@ export const useCreatedArt = () => {
     setLoading(true);
 
     const searchParams = new URLSearchParams({
+      sortBy: '_createdOn desc',
       where: `_ownerId="${_id}"`,
     });
 

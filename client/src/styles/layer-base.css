@@ -1,0 +1,17 @@
+@layer base {
+  html {
+    font-family: var(--font-roboto);
+  }
+
+  h1 {
+    font-family: var(--font-palanquin);
+  }
+
+  p {
+    color: var(--color-blk-ish);
+  }
+
+  a {
+    color: var(--color-yt-ish);
+  }
+}
