@@ -27,6 +27,10 @@
 }
 
 @utility section-wrapper {
+  @apply flex max-w-[25em] flex-1 flex-col shadow-card-slot rounded-2xl justify-center my-20;
+}
+
+@utility section-wrapper-grid {
   @apply flex flex-col max-w-[82em] w-full;
 }
 

@@ -64,7 +64,7 @@ export default function Create() {
   });
 
   return (
-    <section className="flex max-w-[25em] flex-1 flex-col shadow-card-slot rounded-2xl justify-center my-20">
+    <section className="section-wrapper">
       <p className="text-center text-4xl pt-4 text-gradient-l">
         &#10022;
       </p>

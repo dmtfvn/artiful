@@ -21,7 +21,7 @@ export default function Gallery() {
   }
 
   return (
-    <section className="section-wrapper">
+    <section className="section-wrapper-grid">
       <h1 className="text-3xl text-center text-black/75 font-bold mt-20 h1-shadow">
         Check the gallery, or search for something specific.
       </h1>

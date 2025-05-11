@@ -9,10 +9,10 @@ export default function Profile() {
   const path = location.pathname;
 
   return (
-    <section className="section-wrapper">
+    <section className="section-wrapper-grid">
       <div className="flex-center flex-col gap-7.5">
         <h1 className="text-4xl text-center text-black/75 font-bold mt-20 h1-shadow">
-          {`Welcome to your personal space, ${username}!`}
+          Welcome to your personal space, <span className="word-wrap">{username}</span>
         </h1>
 
         <Link

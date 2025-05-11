@@ -1,4 +1,4 @@
-import { useParams } from 'react-router';
+import { Link, useNavigate, useParams } from 'react-router';
 
 import { HeartIcon as HeartOutline, PencilIcon, TrashIcon } from '@heroicons/react/24/outline';
 // import { HeartIcon as HeartSolid } from '@heroicons/react/24/solid';
@@ -10,62 +10,84 @@ import { useArtId } from '../../api/crudApi.js';
 import Spinner from '../spinner/Spinner.jsx';
 
 export default function Details() {
-  const { _id } = useUserContext();
-
   const { artId } = useParams();
   console.log(artId)
+
+  const navigate = useNavigate();
 
   const { art, loading } = useArtId(artId);
   console.log(art)
 
+  const { _id, accessToken } = useUserContext();
+
   const isOwner = _id === art._ownerId;
 
+  const likeHandler = () => {
+    if (!accessToken) {
+      navigate('/login');
+      return;
+    }
+
+    console.log(accessToken)
+  }
+
   return (
-    <section className="relative flex max-w-[25em] min-h-[12em] flex-1 flex-col shadow-card-slot rounded-2xl justify-center my-20 p-4">
+    <section className="relative section-wrapper min-h-[12em] p-4">
       {loading
         ?
         <Spinner />
         :
         <>
-          <h1 className="text-center text-3xl font-semibold text-gradient-l my-4">
+          <h1 className="text-center text-3xl font-semibold text-gradient-l my-4 word-wrap">
             {art.title}
           </h1>
 
           <div>
             <img src={art.imageUrl} alt={art.title} className="rounded-xl" />
 
-            <section className={`flex justify-${isOwner ? 'between' : 'center'} my-4 px-4`}>
+            <section className={`flex ${isOwner ? 'justify-between' : 'justify-center'} my-4`}>
               {isOwner &&
-                <div className="icon-wrapper-style">
+                <Link to="#" className="icon-wrapper-style">
                   <PencilIcon className="icon-style" />
-                </div>
+                </Link>
               }
 
               {!isOwner &&
-                <div className="icon-wrapper-style">
+                <button className="icon-wrapper-style" onClick={likeHandler}>
                   <HeartOutline className="icon-style" />
-                </div>
+                </button>
               }
 
               {isOwner &&
-                <div className="icon-wrapper-style">
+                <button className="icon-wrapper-style">
                   <TrashIcon className="icon-style" />
-                </div>
+                </button>
               }
             </section>
 
             <section className="flex flex-col gap-4 mt-20">
               <p className="text-stone-700">
-                Art creator: <span className="text-stone-400 font-semibold">{art.creator}</span>
+                Artist: <span className="text-stone-400 font-bold word-wrap">{art.creator}</span>
               </p>
 
-              <p className="text-stone-700">
-                Creator email: {art.check
-                  ?
-                  <span className="text-stone-400 font-semibold">{art.email}</span>
-                  :
-                  <span className="text-stone-600">N/A</span>
-                }
+              {art.check
+                ?
+                <p className="text-stone-700">
+                  Artist&rsquo;s email: <span className="text-stone-400">{art.email}</span>
+                </p>
+                :
+                null
+              }
+
+              {art.description
+                ?
+                <p className="text-stone-600 mt-8">{`"${art.description}"`}</p>
+                :
+                null
+              }
+
+              <p className="text-stone-700 text-center mt-4">
+                Likes &#x2771; <span className="text-stone-400">0</span> &#x2770; count
               </p>
             </section>
           </div>
