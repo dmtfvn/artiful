@@ -3,9 +3,8 @@ import { Link, useNavigate, useParams } from 'react-router';
 import { HeartIcon as HeartOutline, PencilIcon, TrashIcon } from '@heroicons/react/24/outline';
 // import { HeartIcon as HeartSolid } from '@heroicons/react/24/solid';
 
-import useUserContext from '../../hooks/useUserContext.js';
-
 import { useArtId } from '../../api/crudApi.js';
+import useUserContext from '../../hooks/useUserContext.js';
 
 import Spinner from '../spinner/Spinner.jsx';
 
@@ -47,7 +46,7 @@ export default function Details() {
 
             <section className={`flex ${isOwner ? 'justify-between' : 'justify-center'} my-4`}>
               {isOwner &&
-                <Link to="#" className="icon-wrapper-style">
+                <Link to={`/edit/${artId}`} className="icon-wrapper-style">
                   <PencilIcon className="icon-style" />
                 </Link>
               }
@@ -79,16 +78,20 @@ export default function Details() {
                 null
               }
 
-              {art.description
+              {art.depiction
                 ?
-                <p className="text-stone-600 mt-8">{`"${art.description}"`}</p>
+                <p className="text-stone-600 mt-8">&#x275E; {art.depiction} &#x275E;</p>
                 :
                 null
               }
 
-              <p className="text-stone-700 text-center mt-4">
-                Likes &#x2771; <span className="text-stone-400">0</span> &#x2770; count
-              </p>
+              <div className="flex flex-col items-center mt-4">
+                <p className="text-stone-700">Likes</p>
+
+                <p className="text-stone-700">
+                  &#x2770; <span className="text-stone-400">0</span> &#x2771;
+                </p>
+              </div>
             </section>
           </div>
         </>

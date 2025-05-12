@@ -8,7 +8,7 @@ export default function ImagePreviewInput({
       id={identifier}
       type="text"
       name={identifier}
-      value={valueUrl}
+      defaultValue={valueUrl}
       onChange={onChangeUrl}
       placeholder="Paste image URL here"
       autoComplete="off"

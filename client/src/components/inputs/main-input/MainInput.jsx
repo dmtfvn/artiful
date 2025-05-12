@@ -1,6 +1,7 @@
 export default function MainInput({
   identifier,
   hint,
+  value,
 }) {
   return (
     <input
@@ -9,6 +10,7 @@ export default function MainInput({
       name={identifier}
       placeholder={hint}
       autoComplete="off"
+      defaultValue={value}
       className="main-input-style"
     />
   );
