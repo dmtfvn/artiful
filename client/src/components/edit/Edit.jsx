@@ -1,9 +1,11 @@
+import { useActionState } from 'react';
 import { Navigate, useNavigate, useParams } from 'react-router';
 
 import { useArtId, useEdit } from '../../api/crudApi.js';
 import useUserContext from '../../hooks/useUserContext.js';
 
 import SaveForm from '../forms/SaveForm.jsx';
+import Spinner from '../spinner/Spinner.jsx';
 
 export default function Edit() {
   const navigate = useNavigate();
@@ -14,22 +16,31 @@ export default function Edit() {
   const { art, loading } = useArtId(artId);
 
   const { _id } = useUserContext();
-  console.log(_id)
-  console.log(art)
+  // console.log(_id)
+  // console.log(art)
 
-  const editHandler = (formData) => {
+  const editHandler = (_, formData) => {
     const artData = Object.fromEntries(formData);
 
     console.log(artData)
   }
 
-  if (!loading) {
-    const isOwner = _id === art._ownerId;
-    console.log(isOwner)//need to be fixed
+  const [, actionEdit, isPending] = useActionState(editHandler, {
+    imageUrl: '',
+    title: '',
+    creator: '',
+    check: '',
+    depiction: '',
+  });
 
-    if (!isOwner) {
-      return <Navigate to="/gallery" />
-    }
+  if (loading) {
+    return <Spinner />
+  }
+
+  const isOwner = _id === art._ownerId;
+
+  if (!isOwner) {
+    return <Navigate to="/gallery" />
   }
 
   return (
@@ -44,8 +55,8 @@ export default function Edit() {
 
       <SaveForm
         art={art}
-        isPending={loading}
-        editHandler={editHandler}
+        isPending={isPending}
+        actionEdit={actionEdit}
       />
     </section>
   );

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-export default function useArtFormData(initialPreview = '') {
+export default function useImagePreview(initialPreview = '') {
   const [imageUrl, setImageUrl] = useState('');
   const [preview, setPreview] = useState(initialPreview);
   const [imageError, setImageError] = useState(false);

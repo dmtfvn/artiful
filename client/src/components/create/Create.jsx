@@ -24,7 +24,6 @@ export default function Create() {
     if (artData.check) {
       artData.email = email;
     }
-    //TODO check on edit
 
     await create(artData);
 

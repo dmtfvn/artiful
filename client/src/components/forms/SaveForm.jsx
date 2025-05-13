@@ -4,12 +4,12 @@ import MainInput from '../inputs/main-input/MainInput.jsx';
 import SubmitButton from '../buttons/submit-button/SubmitButton.jsx';
 import ImagePreviewInput from '../inputs/image-preview-input/ImagePreviewInput.jsx';
 
-import useArtFormData from '../../hooks/useArtFormData.js';
+import useImagePreview from '../../hooks/useImagePreview.js';
 
 export default function SaveForm({
   art,
   isPending,
-  editHandler,
+  actionEdit,
   actionCreate,
 }) {
   const [
@@ -19,7 +19,7 @@ export default function SaveForm({
     imageError,
     imageErrorHandler,
     inputChangeHandler,
-  ] = useArtFormData(art.imageUrl);
+  ] = useImagePreview(art.imageUrl);
 
   const checkRef = useRef(null);
 
@@ -36,7 +36,7 @@ export default function SaveForm({
   }, [art.imageUrl, preview, setPreview]);
 
   return (
-    <form action={art._id ? editHandler : actionCreate} className="space-y-9 p-4">
+    <form action={art._id ? actionEdit : actionCreate} className="space-y-9 p-4">
       <div className="border-1 border-stone-800 rounded-lg overflow-hidden">
         {preview && !imageError
           ?
