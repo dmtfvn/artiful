@@ -15,14 +15,23 @@ export default function Edit() {
   const { artId } = useParams();
   const { art, loading } = useArtId(artId);
 
-  const { _id } = useUserContext();
-  // console.log(_id)
-  // console.log(art)
+  const { _id, email } = useUserContext();
 
-  const editHandler = (_, formData) => {
+  const editHandler = async (_, formData) => {
     const artData = Object.fromEntries(formData);
 
-    console.log(artData)
+    if (!artData.title && !artData.creator) {
+      console.log('Image url, Art name and Art creator are required!');
+      return;
+    }
+
+    if (artData.check) {
+      artData.email = email;
+    }
+
+    await edit(artId, artData);
+
+    navigate(`/details/${artId}`);
   }
 
   const [, actionEdit, isPending] = useActionState(editHandler, {
