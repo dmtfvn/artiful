@@ -1,21 +1,23 @@
+import { useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router';
 
 import { HeartIcon as HeartOutline, PencilIcon, TrashIcon } from '@heroicons/react/24/outline';
 // import { HeartIcon as HeartSolid } from '@heroicons/react/24/solid';
 
-import { useArtId } from '../../api/crudApi.js';
+import { useArtId, useDelete } from '../../api/crudApi.js';
 import useUserContext from '../../hooks/useUserContext.js';
 
+import ConfirmAction from '../modals/ConfirmAction.jsx';
 import Spinner from '../spinner/Spinner.jsx';
 
 export default function Details() {
-  const { artId } = useParams();
-  console.log(artId)
-
   const navigate = useNavigate();
+  const [open, setOpen] = useState(false);
 
+  const { artId } = useParams();
   const { art, loading } = useArtId(artId);
-  console.log(art)
+
+  const { del } = useDelete();
 
   const { _id, accessToken } = useUserContext();
 
@@ -30,8 +32,23 @@ export default function Details() {
     console.log(accessToken)
   }
 
+  const deleteHandler = async () => {
+    await del(artId);
+
+    setOpen(false);
+
+    navigate('/profile');
+  }
+
   return (
     <section className="relative section-wrapper min-h-[12em] p-4">
+      <ConfirmAction
+        name={art.title}
+        state={open}
+        change={setOpen}
+        onDelete={deleteHandler}
+      />
+
       {loading
         ?
         <Spinner />
@@ -58,7 +75,7 @@ export default function Details() {
               }
 
               {isOwner &&
-                <button className="icon-wrapper-style">
+                <button className="icon-wrapper-style" onClick={() => setOpen(true)}>
                   <TrashIcon className="icon-style" />
                 </button>
               }

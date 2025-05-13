@@ -25,7 +25,7 @@ export default function SaveForm({
 
   useEffect(() => {
     if (checkRef.current) {
-      checkRef.current.checked = art.check || false;// no false
+      checkRef.current.checked = art.check || false;
     }
   }, [art.check]);
 

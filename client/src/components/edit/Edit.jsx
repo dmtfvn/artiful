@@ -20,11 +20,6 @@ export default function Edit() {
   const editHandler = async (_, formData) => {
     const artData = Object.fromEntries(formData);
 
-    if (!artData.title && !artData.creator) {
-      console.log('Image url, Art name and Art creator are required!');
-      return;
-    }
-
     if (artData.check) {
       artData.email = email;
     }
