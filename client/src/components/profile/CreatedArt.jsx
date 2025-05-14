@@ -21,13 +21,10 @@ export default function CreatedArt() {
         />
       ))}
 
-      {!loading && !created.length
-        ?
+      {!loading && !created.length &&
         <EmptySpaceMsg
           message="Your creations will appear here."
         />
-        :
-        null
       }
     </div>
   );

@@ -86,20 +86,14 @@ export default function Details() {
                 Artist: <span className="text-stone-400 font-bold word-wrap">{art.creator}</span>
               </p>
 
-              {art.check
-                ?
+              {art.check &&
                 <p className="text-stone-700">
                   Artist&rsquo;s email: <span className="text-stone-400">{art.email}</span>
                 </p>
-                :
-                null
               }
 
-              {art.depiction
-                ?
+              {art.depiction &&
                 <p className="text-stone-600 mt-8">&#x275E; {art.depiction} &#x275E;</p>
-                :
-                null
               }
 
               <div className="flex flex-col items-center mt-4">

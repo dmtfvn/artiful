@@ -57,3 +57,17 @@ export const useCreatedArt = () => {
     loading,
   };
 }
+
+export const useSearchArt = () => {
+  const search = (selectOption, inputValue) => {
+    const searchParams = new URLSearchParams({
+      where: `${selectOption} LIKE "${inputValue}"`,
+    });
+
+    return request.get(`${url}?${searchParams.toString()}`);
+  }
+
+  return {
+    search,
+  };
+}

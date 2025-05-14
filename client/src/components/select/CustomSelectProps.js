@@ -47,6 +47,6 @@ export const styles = {
 };
 
 export const options = [
-  { value: 'art-name', label: 'Art name' },
-  { value: 'art-creator', label: 'Art creator' },
+  { value: 'title', label: 'Art name' },
+  { value: 'creator', label: 'Art creator' },
 ];

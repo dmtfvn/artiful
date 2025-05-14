@@ -29,7 +29,7 @@ export default function Create() {
     imageUrl: '',
     title: '',
     creator: '',
-    check: '',
+    check: false,
     depiction: '',
   });
 

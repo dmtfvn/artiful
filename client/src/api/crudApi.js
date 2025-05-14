@@ -21,6 +21,7 @@ export const useArts = () => {
 
   return {
     arts,
+    setArts,
     loading,
   };
 }

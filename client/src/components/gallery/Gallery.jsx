@@ -7,17 +7,36 @@ import SimpleCard from '../cards/SimpleCard.jsx';
 import CustomSelect from '../select/CustomSelect.jsx';
 
 import { useArts } from '../../api/crudApi.js';
+import { useSearchArt } from '../../api/queryApi.js';
 
 import Spinner from '../spinner/Spinner.jsx';
 import EmptySpaceMsg from '../empty-space-msg/EmptySpaceMsg.jsx';
 
 export default function Gallery() {
-  const { arts, loading } = useArts();
   const [selectOption, setSelectOption] = useState({});
+  const [inputValue, setInputValue] = useState('');
+  const [noSearch, setNoSearch] = useState(false);
 
-  const searchHandler = (formData) => {
-    console.log(Object.fromEntries(formData))
-    console.log(selectOption)
+  const { arts, setArts, loading } = useArts();
+  const { search } = useSearchArt();
+
+  const searchHandler = async () => {
+    const option = selectOption.value;
+
+    if (!option) {
+      return;
+    }
+
+    const searchResult = await search(option, inputValue);
+
+    if (!searchResult.length) {
+      setArts([]);
+      setNoSearch(true);
+      return;
+    }
+
+    setArts(searchResult);
+    setNoSearch(false);
   }
 
   return (
@@ -28,7 +47,10 @@ export default function Gallery() {
 
       <form action={searchHandler} className="flex-center flex-wrap mt-20 mb-4 gap-11">
         <div className="flex">
-          <SearchInput />
+          <SearchInput
+            searchValue={inputValue}
+            setState={setInputValue}
+          />
 
           <button className="flex-center -ml-1.5 cursor-pointer">
             <FontAwesomeIcon
@@ -53,13 +75,16 @@ export default function Gallery() {
           />
         ))}
 
-        {!loading && !arts.length
-          ?
+        {noSearch && !arts.length &&
+          <EmptySpaceMsg
+            message="Oops! We couldn't find what you were looking for."
+          />
+        }
+
+        {!noSearch && !arts.length && !loading &&
           <EmptySpaceMsg
             message="This place is supposed to be full of art"
           />
-          :
-          null
         }
       </div>
     </section>

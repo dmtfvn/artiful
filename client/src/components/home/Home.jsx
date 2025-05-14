@@ -48,13 +48,10 @@ export default function Home() {
               />
             ))}
 
-            {!loading && !latest.length
-              ?
+            {!loading && !latest.length &&
               <EmptySpaceMsg
                 message="The latest three additions will show up here"
               />
-              :
-              null
             }
           </div>
         </section>

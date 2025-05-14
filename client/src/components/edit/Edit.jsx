@@ -33,7 +33,7 @@ export default function Edit() {
     imageUrl: '',
     title: '',
     creator: '',
-    check: '',
+    check: false,
     depiction: '',
   });
 
