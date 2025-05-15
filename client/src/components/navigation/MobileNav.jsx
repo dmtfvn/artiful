@@ -27,7 +27,7 @@ export default function MobileNav({
           <section className="pb-6">
             {token
               ?
-              (authLinks.map(item => (
+              authLinks.map(item => (
                 <Link
                   key={item.name}
                   to={item.path}
@@ -36,9 +36,9 @@ export default function MobileNav({
                 >
                   {item.name}
                 </Link>
-              )))
+              ))
               :
-              (guestLinks.map(item => (
+              guestLinks.map(item => (
                 <Link
                   key={item.name}
                   to={item.path}
@@ -47,7 +47,7 @@ export default function MobileNav({
                 >
                   {item.name}
                 </Link>
-              )))
+              ))
             }
           </section>
 

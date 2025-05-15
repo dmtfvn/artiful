@@ -1,9 +1,9 @@
 import SimpleCard from '../cards/SimpleCard.jsx';
 
-import { useCreatedArt } from '../../api/queryApi.js';
-
 import Spinner from '../spinner/Spinner.jsx';
 import EmptySpaceMsg from '../empty-space-msg/EmptySpaceMsg.jsx';
+
+import { useCreatedArt } from '../../api/queryApi.js';
 
 export default function CreatedArt() {
   const { created, loading } = useCreatedArt();

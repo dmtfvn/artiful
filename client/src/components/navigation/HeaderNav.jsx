@@ -22,7 +22,7 @@ export default function HeaderNav({
         <section className="flex gap-6">
           {token
             ?
-            (authLinks.map(item => (
+            authLinks.map(item => (
               <Link
                 key={item.name}
                 to={item.path}
@@ -30,9 +30,9 @@ export default function HeaderNav({
               >
                 {item.name}
               </Link>
-            )))
+            ))
             :
-            (guestLinks.map(item => (
+            guestLinks.map(item => (
               <Link
                 key={item.name}
                 to={item.path}
@@ -40,7 +40,7 @@ export default function HeaderNav({
               >
                 {item.name}
               </Link>
-            )))
+            ))
           }
         </section>
 

@@ -4,11 +4,11 @@ import { Link, useNavigate, useParams } from 'react-router';
 import { HeartIcon as HeartOutline, PencilIcon, TrashIcon } from '@heroicons/react/24/outline';
 // import { HeartIcon as HeartSolid } from '@heroicons/react/24/solid';
 
+import Spinner from '../spinner/Spinner.jsx';
+import ConfirmAction from '../modals/ConfirmAction.jsx';
+
 import { useArtId, useDelete } from '../../api/crudApi.js';
 import useUserContext from '../../hooks/useUserContext.js';
-
-import ConfirmAction from '../modals/ConfirmAction.jsx';
-import Spinner from '../spinner/Spinner.jsx';
 
 export default function Details() {
   const navigate = useNavigate();
