@@ -7,7 +7,7 @@ export default function SubmitButton({
     <button
       type="submit"
       disabled={pending}
-      className={`${style} ${pending ? 'cursor-not-allowed opacity-50' : ''}`.trim()}
+      className={`${style} ${pending ? 'cursor-not-allowed opacity-50' : 'cursor-pointer'}`}
     >
       {label}
     </button>
