@@ -4,9 +4,11 @@ import { styles, options } from './CustomSelectProps.js';
 
 export default function CustomSelect({
   setState,
+  onSelect,
 }) {
   const selectHandler = (selectedValue) => {
     setState(() => selectedValue);
+    onSelect(true);
   }
 
   return (

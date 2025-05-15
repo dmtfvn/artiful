@@ -38,13 +38,13 @@ export default function Edit() {
   });
 
   if (loading) {
-    return <Spinner />
+    return <Spinner />;
   }
 
   const isOwner = _id === art._ownerId;
 
   if (!isOwner) {
-    return <Navigate to="/gallery" />
+    return <Navigate to="/gallery" />;
   }
 
   return (
