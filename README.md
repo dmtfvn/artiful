@@ -17,8 +17,6 @@ This repo contains a project for the course **JS React** @ **SoftUni**
 
 >*Tailwind CSS*
 
->*Font Awesome*
-
 >*Headless UI*
 
 >*heroicons*
