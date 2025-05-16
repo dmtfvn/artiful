@@ -18,7 +18,7 @@ export default function ConfirmAction({
         <div className="flex-center min-h-full text-center p-4 sm:mr-[15px]">
           <DialogPanel
             transition
-            className="relative transform overflow-hidden rounded-xl transition-all data-closed:translate-y-4 data-closed:opacity-0 data-enter:duration-200 data-enter:ease-out data-leave:duration-200 data-leave:ease-in max-w-[24em] w-full bg-stone-800 mx-auto"
+            className="relative transform overflow-hidden rounded-xl transition-all data-closed:translate-y-4 data-closed:opacity-0 data-enter:duration-200 data-enter:ease-out data-leave:duration-200 data-leave:ease-in max-w-[24em] w-full mx-auto bg-gradient-to-r from-stone-800 via-neutral-900 to-stone-800"
           >
             <div className="flex-center flex-col p-4 gap-4">
               <div className="flex-center size-12 shrink-0 rounded-full bg-red-100">
@@ -30,7 +30,7 @@ export default function ConfirmAction({
                   Are you sure you want to delete <span className="font-bold word-wrap">{name}</span>?
                 </p>
 
-                <p className="text-red-300">
+                <p className="text-slate-500">
                   This action cannot be undone.
                 </p>
               </div>

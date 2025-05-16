@@ -2,34 +2,52 @@ import { useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router';
 
 import { HeartIcon as HeartOutline, PencilIcon, TrashIcon } from '@heroicons/react/24/outline';
-// import { HeartIcon as HeartSolid } from '@heroicons/react/24/solid';
+import { HeartIcon as HeartSolid } from '@heroicons/react/24/solid';
 
 import Spinner from '../spinner/Spinner.jsx';
 import ConfirmAction from '../modals/ConfirmAction.jsx';
 
 import { useArtId, useDelete } from '../../api/crudApi.js';
+import { useAddLike, useArtIdLike, useRemoveLike } from '../../api/likeApi.js';
 import useUserContext from '../../hooks/useUserContext.js';
 
 export default function Details() {
   const navigate = useNavigate();
   const [open, setOpen] = useState(false);
+  const [heart, setHeart] = useState(false);
 
+  const { _id, accessToken } = useUserContext();
   const { artId } = useParams();
+
   const { art, loading } = useArtId(artId);
+  const { like } = useAddLike();
+  const { unlike } = useRemoveLike();
+  const { artLike } = useArtIdLike(_id, artId);
 
   const { del } = useDelete();
 
-  const { _id, accessToken } = useUserContext();
-
   const isOwner = _id === art._ownerId;
 
-  const likeHandler = () => {
+  const addLikeHandler = async () => {
     if (!accessToken) {
       navigate('/login');
       return;
     }
 
-    console.log(accessToken)
+    try {
+      const res = await like({ artId });
+      console.log(res)
+
+      setHeart(true);
+    } catch (err) {
+      console.log(err.message)
+    }
+  }
+
+  const removeLikeHandler = async () => {
+    await unlike(artLike[0]._id);
+
+    setHeart(false);
   }
 
   const deleteHandler = async () => {
@@ -69,8 +87,13 @@ export default function Details() {
               }
 
               {!isOwner &&
-                <button className="icon-wrapper-style" onClick={likeHandler}>
-                  <HeartOutline className="icon-style" />
+                <button className="icon-wrapper-style" onClick={artLike.length ? removeLikeHandler : addLikeHandler}>
+                  {artLike.length
+                    ?
+                    <HeartSolid className="icon-style" />
+                    :
+                    <HeartOutline className="icon-style" />
+                  }
                 </button>
               }
 
