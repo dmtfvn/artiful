@@ -39,9 +39,9 @@ export default function SearchForm({
   const [, actionSearch, isPending] = useActionState(searchHandler);
 
   return (
-    <div className="flex flex-col gap-4">
-      <form action={actionSearch} className="flex-center flex-wrap mt-20 gap-11">
-        <div className="flex">
+    <div className="relative max-w-[29em] w-full flex flex-col self-center">
+      <form action={actionSearch} className="flex-center flex-wrap mt-20 mb-4 gap-11">
+        <div className="flex max-w-3xs w-full">
           <SearchInput
             searchValue={inputValue}
             setSearchValue={setInputValue}
@@ -49,7 +49,8 @@ export default function SearchForm({
 
           <button
             disabled={isPending}
-            className={`flex-center -ml-1.5 bg-stone-800 rounded-r-md text-zinc-600 ${isPending ? 'cursor-not-allowed' : 'cursor-pointer'} hover:text-zinc-400 px-2 py-1.5 z-5`}>
+            className={`flex-center -ml-1.5 bg-stone-800 rounded-r-md text-zinc-600 ${isPending ? 'cursor-not-allowed' : 'cursor-pointer'} hover:text-zinc-400 px-2 py-1.5 z-5`}
+          >
             <MagnifyingGlassIcon
               className="size-6"
             />
@@ -62,9 +63,9 @@ export default function SearchForm({
         />
       </form>
 
-      <div className="flex justify-center min-h-2 h-full">
+      <div className="absolute bottom-0 left-0 right-0 flex justify-center">
         {isPending && criteria &&
-          <BarLoader color="rgb(68, 64, 60)" />
+          <BarLoader color="rgb(68, 64, 60)" width={420} />
         }
       </div>
     </div>
