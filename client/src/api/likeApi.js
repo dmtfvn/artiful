@@ -5,7 +5,7 @@ import request from '../utils/request.js';
 
 const url = 'http://localhost:3030/data/likes';
 
-export const useArtIdLike = (_id, artId) => {
+export const useArtLikeId = (_id, artId) => {
   const [artLike, setArtLike] = useState([]);
 
   useEffect(() => {

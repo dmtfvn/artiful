@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router';
 
 import { HeartIcon as HeartOutline, PencilIcon, TrashIcon } from '@heroicons/react/24/outline';
@@ -8,13 +8,15 @@ import Spinner from '../spinner/Spinner.jsx';
 import ConfirmAction from '../modals/ConfirmAction.jsx';
 
 import { useArtId, useDelete } from '../../api/crudApi.js';
-import { useAddLike, useArtIdLike, useRemoveLike } from '../../api/likeApi.js';
+import { useAddLike, useArtLikeId, useRemoveLike } from '../../api/likeApi.js';
 import useUserContext from '../../hooks/useUserContext.js';
 
 export default function Details() {
   const navigate = useNavigate();
+
   const [open, setOpen] = useState(false);
-  const [heart, setHeart] = useState(false);
+  const [heart, setHeart] = useState('');
+  const [inProcess, setInProcess] = useState(false);
 
   const { _id, accessToken } = useUserContext();
   const { artId } = useParams();
@@ -22,11 +24,19 @@ export default function Details() {
   const { art, loading } = useArtId(artId);
   const { like } = useAddLike();
   const { unlike } = useRemoveLike();
-  const { artLike } = useArtIdLike(_id, artId);
+  const { artLike } = useArtLikeId(_id, artId);
 
   const { del } = useDelete();
 
   const isOwner = _id === art._ownerId;
+
+  useEffect(() => {
+    if (!artLike.length) {
+      return;
+    }
+
+    setHeart(artLike[0]._id)
+  }, [artLike]);
 
   const addLikeHandler = async () => {
     if (!accessToken) {
@@ -34,20 +44,41 @@ export default function Details() {
       return;
     }
 
+    setInProcess(true);
+
     try {
       const res = await like({ artId });
-      console.log(res)
-
-      setHeart(true);
+      setHeart(res._id);
     } catch (err) {
       console.log(err.message)
+    } finally {
+      setInProcess(false);
     }
   }
 
   const removeLikeHandler = async () => {
-    await unlike(artLike[0]._id);
+    setInProcess(true);
 
-    setHeart(false);
+    try {
+      await unlike(heart);
+      setHeart('');
+    } catch (err) {
+      console.log(err.message)
+    } finally {
+      setInProcess(false);
+    }
+  }
+
+  const toggleHandler = () => {
+    if (inProcess) {
+      return;
+    }
+
+    if (heart) {
+      removeLikeHandler();
+    } else {
+      addLikeHandler();
+    }
   }
 
   const deleteHandler = async () => {
@@ -87,8 +118,8 @@ export default function Details() {
               }
 
               {!isOwner &&
-                <button className="icon-wrapper-style" onClick={artLike.length ? removeLikeHandler : addLikeHandler}>
-                  {artLike.length
+                <button className="icon-wrapper-style" onClick={toggleHandler} disabled={inProcess}>
+                  {heart
                     ?
                     <HeartSolid className="icon-style" />
                     :
