@@ -25,6 +25,27 @@ export const useArtLikeId = (_id, artId) => {
   };
 }
 
+export const useArtLikeCount = (artId) => {
+  const [likeCount, setLikeCount] = useState(null);
+
+  useEffect(() => {
+    const searchParams = new URLSearchParams({
+      where: `artId="${artId}"`,
+    });
+
+    request.get(`${url}?${searchParams.toString()}`)
+      .then(data => {
+        setLikeCount(data.length);
+      })
+
+  }, [artId]);
+
+  return {
+    likeCount,
+    setLikeCount,
+  };
+}
+
 export const useAddLike = () => {
   const { accessToken } = useUserContext();
 

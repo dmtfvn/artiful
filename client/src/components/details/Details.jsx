@@ -8,7 +8,7 @@ import Spinner from '../spinner/Spinner.jsx';
 import ConfirmAction from '../modals/ConfirmAction.jsx';
 
 import { useArtId, useDelete } from '../../api/crudApi.js';
-import { useAddLike, useArtLikeId, useRemoveLike } from '../../api/likeApi.js';
+import { useAddLike, useArtLikeCount, useArtLikeId, useRemoveLike } from '../../api/likeApi.js';
 import useUserContext from '../../hooks/useUserContext.js';
 
 export default function Details() {
@@ -25,6 +25,7 @@ export default function Details() {
   const { like } = useAddLike();
   const { unlike } = useRemoveLike();
   const { artLike } = useArtLikeId(_id, artId);
+  const { likeCount, setLikeCount } = useArtLikeCount(artId);
 
   const { del } = useDelete();
 
@@ -45,12 +46,15 @@ export default function Details() {
     }
 
     setInProcess(true);
+    setLikeCount(likeCount + 1);
 
     try {
       const res = await like({ artId });
+
       setHeart(res._id);
     } catch (err) {
       console.log(err.message)
+      setLikeCount(likeCount - 1);
     } finally {
       setInProcess(false);
     }
@@ -58,12 +62,15 @@ export default function Details() {
 
   const removeLikeHandler = async () => {
     setInProcess(true);
+    setLikeCount(likeCount - 1);
 
     try {
       await unlike(heart);
+
       setHeart('');
     } catch (err) {
       console.log(err.message)
+      setLikeCount(likeCount + 1);
     } finally {
       setInProcess(false);
     }
@@ -154,7 +161,7 @@ export default function Details() {
                 <p className="text-stone-700">Likes</p>
 
                 <p className="text-stone-700">
-                  &#x2770; <span className="text-stone-400">0</span> &#x2771;
+                  &#x2770; <span className="text-stone-400">{likeCount}</span> &#x2771;
                 </p>
               </div>
             </section>
