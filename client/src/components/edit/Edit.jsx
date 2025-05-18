@@ -4,7 +4,7 @@ import { Navigate, useNavigate, useParams } from 'react-router';
 import SaveForm from '../forms/SaveForm.jsx';
 import Spinner from '../spinner/Spinner.jsx';
 
-import { useArtId, useEdit } from '../../api/crudApi.js';
+import { useArt, useEdit } from '../../api/crudApi.js';
 import useUserContext from '../../hooks/useUserContext.js';
 
 export default function Edit() {
@@ -13,7 +13,7 @@ export default function Edit() {
   const { edit } = useEdit();
 
   const { artId } = useParams();
-  const { art, loading } = useArtId(artId);
+  const { art, loading } = useArt(artId);
 
   const { _id, email } = useUserContext();
 

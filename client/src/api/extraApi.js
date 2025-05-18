@@ -31,7 +31,7 @@ export const useLatest = () => {
   };
 }
 
-export const useCreatedArt = () => {
+export const useCreated = () => {
   const { _id } = useUserContext();
 
   const [created, setCreated] = useState([]);
@@ -58,7 +58,7 @@ export const useCreatedArt = () => {
   };
 }
 
-export const useSearchArt = () => {
+export const useSearch = () => {
   const search = (selectOption, inputValue) => {
     const searchParams = new URLSearchParams({
       where: `${selectOption} LIKE "${inputValue}"`,

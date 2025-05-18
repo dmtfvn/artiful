@@ -5,7 +5,7 @@ import request from '../utils/request.js';
 
 const url = 'http://localhost:3030/data/likes';
 
-export const useArtLikeId = (_id, artId) => {
+export const useLike = (_id, artId) => {
   const [artLike, setArtLike] = useState([]);
 
   useEffect(() => {
@@ -25,7 +25,35 @@ export const useArtLikeId = (_id, artId) => {
   };
 }
 
-export const useArtLikeCount = (artId) => {
+export const useUserLikes = () => {
+  const [userLikes, setUserLikes] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  const { _id } = useUserContext();
+
+  useEffect(() => {
+    setLoading(true);
+
+    const searchParams = new URLSearchParams({
+      load: `_art=artId:arts`,
+      where: `_ownerId="${_id}"`
+    });
+
+    request.get(`${url}?${searchParams.toString()}`)
+      .then(data => {
+        setUserLikes(data);
+        setLoading(false);
+      })
+
+  }, [_id]);
+
+  return {
+    userLikes,
+    loading,
+  };
+}
+
+export const useLikeCount = (artId) => {
   const [likeCount, setLikeCount] = useState(null);
 
   useEffect(() => {

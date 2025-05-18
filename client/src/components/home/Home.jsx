@@ -3,7 +3,7 @@ import SimpleCard from '../cards/SimpleCard.jsx';
 import Spinner from '../spinner/Spinner.jsx';
 import EmptySpaceMsg from '../empty-space-msg/EmptySpaceMsg.jsx';
 
-import { useLatest } from '../../api/queryApi.js';
+import { useLatest } from '../../api/extraApi.js';
 
 export default function Home() {
   const { latest, loading } = useLatest();

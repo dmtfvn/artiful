@@ -3,10 +3,10 @@ import SimpleCard from '../cards/SimpleCard.jsx';
 import Spinner from '../spinner/Spinner.jsx';
 import EmptySpaceMsg from '../empty-space-msg/EmptySpaceMsg.jsx';
 
-import { useCreatedArt } from '../../api/queryApi.js';
+import { useCreated } from '../../api/extraApi.js';
 
 export default function CreatedArt() {
-  const { created, loading } = useCreatedArt();
+  const { created, loading } = useCreated();
 
   return (
     <div className="relative grid-gallery">

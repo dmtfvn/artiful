@@ -26,7 +26,7 @@ export const useArts = () => {
   };
 }
 
-export const useArtId = (id) => {
+export const useArt = (id) => {
   const [art, setArt] = useState({});
   const [loading, setLoading] = useState(true);
 

@@ -5,7 +5,7 @@ import { MagnifyingGlassIcon } from '@heroicons/react/24/outline';
 import SearchInput from '../inputs/search-input/SearchInput.jsx';
 import CustomSelect from '../select/CustomSelect.jsx';
 
-import { useSearchArt } from '../../api/queryApi.js';
+import { useSearch } from '../../api/extraApi.js';
 
 export default function SearchForm({
   artState,
@@ -15,7 +15,7 @@ export default function SearchForm({
   const [inputValue, setInputValue] = useState('');
   const [criteria, setCriteria] = useState(false);
 
-  const { search } = useSearchArt();
+  const { search } = useSearch();
 
   const searchHandler = async () => {
     const option = selectOption.value;

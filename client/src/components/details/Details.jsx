@@ -7,8 +7,8 @@ import { HeartIcon as HeartSolid } from '@heroicons/react/24/solid';
 import Spinner from '../spinner/Spinner.jsx';
 import ConfirmAction from '../modals/ConfirmAction.jsx';
 
-import { useArtId, useDelete } from '../../api/crudApi.js';
-import { useAddLike, useArtLikeCount, useArtLikeId, useRemoveLike } from '../../api/likeApi.js';
+import { useArt, useDelete } from '../../api/crudApi.js';
+import { useAddLike, useLike, useLikeCount, useRemoveLike } from '../../api/likeApi.js';
 import useUserContext from '../../hooks/useUserContext.js';
 
 export default function Details() {
@@ -21,12 +21,12 @@ export default function Details() {
   const { _id, accessToken } = useUserContext();
   const { artId } = useParams();
 
-  const { art, loading } = useArtId(artId);
+  const { art, loading } = useArt(artId);
+  const { artLike } = useLike(_id, artId);
+  const { likeCount, setLikeCount } = useLikeCount(artId);
+
   const { like } = useAddLike();
   const { unlike } = useRemoveLike();
-  const { artLike } = useArtLikeId(_id, artId);
-  const { likeCount, setLikeCount } = useArtLikeCount(artId);
-
   const { del } = useDelete();
 
   const isOwner = _id === art._ownerId;
