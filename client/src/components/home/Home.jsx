@@ -3,10 +3,11 @@ import SimpleCard from '../cards/SimpleCard.jsx';
 import Spinner from '../spinner/Spinner.jsx';
 import EmptySpaceMsg from '../empty-space-msg/EmptySpaceMsg.jsx';
 
-import { useLatest } from '../../api/extraApi.js';
+import { useLatest, useMostLiked } from '../../api/extraApi.js';
 
 export default function Home() {
   const { latest, loading } = useLatest();
+  const { mostLiked, evaluating } = useMostLiked();
 
   return (
     <section className="flex flex-col items-center max-w-[43em] w-full">
@@ -27,11 +28,19 @@ export default function Home() {
       <div className="w-full py-10 divide-y divide-black">
         <section className="flex justify-center py-10">
           <div className="relative flex-center max-w-[14em] w-full min-h-[19em] shadow-card-slot rounded-2xl px-4">
-            {/* <SimpleCard image="https://idsb.tmgrup.com.tr/ly/uploads/images/2020/10/13/64827.jpg" /> */}
+            {evaluating &&
+              <Spinner />
+            }
 
-            <EmptySpaceMsg
-              message="For the one with the most likes"
-            />
+            {!evaluating && mostLiked[0]._likes.length > 0 &&
+              <SimpleCard {...mostLiked[0]} />
+            }
+
+            {!evaluating && !mostLiked[0]._likes.length &&
+              < EmptySpaceMsg
+                message="For the one with the most likes"
+              />
+            }
           </div>
         </section>
 

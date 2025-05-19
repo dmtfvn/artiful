@@ -1,11 +1,11 @@
-import { FadeLoader } from 'react-spinners';
+import { ScaleLoader } from 'react-spinners';
 
 export default function Spinner() {
   return (
     <div className="absolute flex-center inset-10">
-      <FadeLoader
+      <ScaleLoader
         color="rgb(68, 64, 60)"
-        speedMultiplier={2}
+        width={6}
       />
     </div>
   );

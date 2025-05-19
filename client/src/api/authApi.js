@@ -39,7 +39,6 @@ export const useLogout = () => {
       .finally(() => {
         userLogout();
       });
-
   }, [accessToken, userLogout]);
 
   return {

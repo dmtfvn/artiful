@@ -16,8 +16,7 @@ export const useLike = (_id, artId) => {
     request.get(`${url}?${searchParams.toString()}`)
       .then(data => {
         setArtLike(data);
-      })
-
+      });
   }, [_id, artId]);
 
   return {
@@ -36,15 +35,14 @@ export const useUserLikes = () => {
 
     const searchParams = new URLSearchParams({
       load: `_art=artId:arts`,
-      where: `_ownerId="${_id}"`
+      where: `_ownerId="${_id}"`,
     });
 
     request.get(`${url}?${searchParams.toString()}`)
       .then(data => {
         setUserLikes(data);
         setLoading(false);
-      })
-
+      });
   }, [_id]);
 
   return {
@@ -64,8 +62,7 @@ export const useLikeCount = (artId) => {
     request.get(`${url}?${searchParams.toString()}`)
       .then(data => {
         setLikeCount(data.length);
-      })
-
+      });
   }, [artId]);
 
   return {
