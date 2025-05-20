@@ -23,7 +23,7 @@ export default function LikedArt() {
 
       {!loading && !userLikes.length &&
         <EmptySpaceMsg
-          message="Your likes will show up here."
+          message="Your likes will show up here"
         />
       }
     </div>

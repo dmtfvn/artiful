@@ -23,7 +23,7 @@ export default function CreatedArt() {
 
       {!loading && !created.length &&
         <EmptySpaceMsg
-          message="Your creations will appear here."
+          message="Your creations will show up here"
         />
       }
     </div>

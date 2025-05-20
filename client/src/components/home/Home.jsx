@@ -7,7 +7,8 @@ import { useLatest, useMostLiked } from '../../api/extraApi.js';
 
 export default function Home() {
   const { latest, loading } = useLatest();
-  const { mostLiked, evaluating } = useMostLiked();
+  const { mostLiked, processing } = useMostLiked();
+  console.log(mostLiked)
 
   return (
     <section className="flex flex-col items-center max-w-[43em] w-full">
@@ -28,15 +29,15 @@ export default function Home() {
       <div className="w-full py-10 divide-y divide-black">
         <section className="flex justify-center py-10">
           <div className="relative flex-center max-w-[14em] w-full min-h-[19em] shadow-card-slot rounded-2xl px-4">
-            {evaluating &&
+            {processing &&
               <Spinner />
             }
 
-            {!evaluating && mostLiked[0]._likes.length > 0 &&
+            {!processing && mostLiked[0]?._likes.length > 0 &&
               <SimpleCard {...mostLiked[0]} />
             }
 
-            {!evaluating && !mostLiked[0]._likes.length &&
+            {!processing && !mostLiked[0]?._likes.length &&
               < EmptySpaceMsg
                 message="For the one with the most likes"
               />

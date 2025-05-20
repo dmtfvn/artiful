@@ -34,7 +34,7 @@ export const useUserLikes = () => {
     setLoading(true);
 
     const searchParams = new URLSearchParams({
-      load: `_art=artId:arts`,
+      load: '_art=artId:arts',
       where: `_ownerId="${_id}"`,
     });
 

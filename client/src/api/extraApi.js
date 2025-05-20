@@ -7,38 +7,37 @@ const url = 'http://localhost:3030/data/arts';
 
 export const useMostLiked = () => {
   const [mostLiked, setMostLiked] = useState([]);
-  const [evaluating, setEvaluating] = useState(true);
+  const [processing, setProcessing] = useState(true);
 
   useEffect(() => {
-    setEvaluating(true);
+    setProcessing(true);
 
-    request.get(url)
-      .then(arts => {
-        const artsWithLikes = Promise.all(arts.map(a => {
-          const searchParams = new URLSearchParams({
-            where: `artId="${a._id}"`,
-          });
+    const searchParams = new URLSearchParams({
+      load: '_likes=artId:likes',
+    });
 
-          return request.get(`http://localhost:3030/data/likes?${searchParams.toString()}`)
-            .then(likes => ({
-              ...a,
-              _likes: likes,
-              _likesCount: likes.length,
-            }));
-        }));
+    request.get(`${url}?${searchParams.toString()}`)
+      .then(data => {
+        const artsWithLikes = data.map(a => {
+          const filteredLikes = a._likes.filter(l => l.artId === a._id);
 
-        artsWithLikes.then(updatedArts => {
-          const sortedArts = updatedArts.sort((a, b) => b._likesCount - a._likesCount);
-
-          setMostLiked(sortedArts);
-          setEvaluating(false);
+          return {
+            ...a,
+            _likes: filteredLikes,
+            _likesCount: filteredLikes.length,
+          };
         });
+
+        artsWithLikes.sort((a, b) => b._likesCount - a._likesCount);
+
+        setMostLiked(artsWithLikes);
+        setProcessing(false);
       });
   }, []);
 
   return {
     mostLiked,
-    evaluating,
+    processing,
   };
 }
 
