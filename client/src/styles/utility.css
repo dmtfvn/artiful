@@ -46,7 +46,7 @@
   @apply max-w-[9.5em] w-full p-1.5 outline-none text-stone-500 border-y-2 border-stone-800 hover:bg-black/35 focus:bg-black/35 cursor-pointer;
 }
 
-@utility h1-shadow {
+@utility txt-shadow {
   @apply text-shadow-xs text-shadow-stone-800;
 }
 

@@ -8,7 +8,6 @@ import { useLatest, useMostLiked } from '../../api/extraApi.js';
 export default function Home() {
   const { latest, loading } = useLatest();
   const { mostLiked, processing } = useMostLiked();
-  console.log(mostLiked)
 
   return (
     <section className="flex flex-col items-center max-w-[43em] w-full">
@@ -26,8 +25,12 @@ export default function Home() {
         <p className="text-[2em] text-[var(--color-gy-ish)] my-5">&#x2193;</p>
       </div>
 
-      <div className="w-full py-10 divide-y divide-black">
-        <section className="flex justify-center py-10">
+      <div className="w-full my-20">
+        <p className="text-center text-2xl text-black/60 font-bold txt-shadow">
+          Most likes
+        </p>
+
+        <section className="flex justify-center">
           <div className="relative flex-center max-w-[14em] w-full min-h-[19em] shadow-card-slot rounded-2xl px-4">
             {processing &&
               <Spinner />
@@ -45,7 +48,11 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="flex justify-center py-10">
+        <p className="text-center text-2xl text-black/60 font-bold txt-shadow mt-20">
+          Latest additions
+        </p>
+
+        <section className="flex justify-center">
           <div className="relative flex items-center justify-evenly flex-wrap w-full min-h-[19em] shadow-card-slot rounded-2xl p-4 gap-10">
             {loading &&
               <Spinner />

@@ -6,7 +6,7 @@ export default function NotFound() {
       <div className="flex-center flex-col text-center gap-10">
         <p className="text-base font-semibold text-sky-600">404</p>
 
-        <h1 className="text-5xl font-semibold tracking-tight text-balance text-black/75 h1-shadow">
+        <h1 className="text-5xl font-semibold tracking-tight text-balance text-black/75 txt-shadow">
           Page not found
         </h1>
 
