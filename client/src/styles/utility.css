@@ -43,7 +43,7 @@
 }
 
 @utility error-msg {
-  @apply text-sm/6 text-pink-900;
+  @apply text-sm/6 text-red-400;
 }
 
 @utility select-style {

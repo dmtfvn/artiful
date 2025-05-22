@@ -19,7 +19,7 @@ export default function AuthInput({
       autoComplete="off"
       value={inputValue}
       onChange={onTyping}
-      className={`auth-style ${error ? "outline-pink-900" : ''}`.trim()}
+      className={`auth-style ${error ? "outline-red-400" : ''}`.trim()}
     />
   );
 }
