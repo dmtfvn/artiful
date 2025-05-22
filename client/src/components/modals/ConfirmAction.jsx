@@ -1,3 +1,5 @@
+import { useActionState } from 'react';
+
 import { Dialog, DialogBackdrop, DialogPanel } from '@headlessui/react';
 import { ExclamationTriangleIcon } from '@heroicons/react/24/outline';
 
@@ -7,6 +9,8 @@ export default function ConfirmAction({
   change,
   onDelete,
 }) {
+  const [, actionDelete, isPending] = useActionState(onDelete);
+
   return (
     <Dialog open={state} onClose={change} className="relative z-10">
       <DialogBackdrop
@@ -36,11 +40,11 @@ export default function ConfirmAction({
               </div>
             </div>
 
-            <div className="flex flex-col p-4 gap-4 sm:flex-row-reverse">
+            <form action={actionDelete} className="flex flex-col p-4 gap-4 sm:flex-row-reverse">
               <button
-                type="button"
-                onClick={onDelete}
-                className="inline-flex w-full justify-center rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-xs hover:bg-red-500 cursor-pointer"
+                type="submit"
+                disabled={isPending}
+                className={`inline-flex w-full justify-center rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-xs hover:bg-red-500 ${isPending ? 'cursor-not-allowed opacity-50' : 'cursor-pointer'}`}
               >
                 Delete
               </button>
@@ -53,7 +57,7 @@ export default function ConfirmAction({
               >
                 Cancel
               </button>
-            </div>
+            </form>
           </DialogPanel>
         </div>
       </div>
