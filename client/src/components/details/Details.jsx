@@ -149,12 +149,12 @@ export default function Details() {
 
               {art.check &&
                 <p className="text-stone-700">
-                  Artist&rsquo;s email: <span className="text-stone-400">{art.email}</span>
+                  Artist&rsquo;s email: <span className="text-stone-400 word-wrap">{art.email}</span>
                 </p>
               }
 
               {art.depiction &&
-                <p className="text-stone-600 mt-8">&#x275E; {art.depiction} &#x275E;</p>
+                <p className="text-stone-600 mt-8 word-wrap">&#x275E; {art.depiction} &#x275E;</p>
               }
 
               <div className="flex flex-col items-center mt-4">

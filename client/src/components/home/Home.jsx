@@ -27,7 +27,7 @@ export default function Home() {
 
       <div className="w-full my-20">
         <p className="text-center text-2xl text-black/60 font-bold txt-shadow">
-          Most likes
+          Most liked
         </p>
 
         <section className="flex justify-center">
@@ -42,7 +42,7 @@ export default function Home() {
 
             {!processing && !mostLiked[0]?._likes.length &&
               < EmptySpaceMsg
-                message="For the one with the most likes"
+                message="For the art with the most likes"
               />
             }
           </div>

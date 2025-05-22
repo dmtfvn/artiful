@@ -1,4 +1,4 @@
-import { useActionState } from 'react';
+import { useActionState, useState } from 'react';
 import { Link, useNavigate } from 'react-router';
 
 import AuthInput from '../inputs/auth-input/AuthInput.jsx';
@@ -7,42 +7,63 @@ import SubmitButton from '../buttons/submit-button/SubmitButton.jsx';
 import { useRegister } from '../../api/authApi.js';
 import useUserContext from '../../hooks/useUserContext.js';
 
+import { signupSchema } from '../../schemas/authSchema.js';
+
 export default function SignUp() {
+  const [formData, setFormData] = useState({
+    username: '',
+    email: '',
+  });
+
+  const [errors, setErrors] = useState({
+    username: '',
+    email: '',
+    password: '',
+    rePassword: '',
+  });
+
   const navigate = useNavigate();
 
   const { register } = useRegister();
 
   const { userLogin } = useUserContext();
 
+  const inputChangeHandler = (e) => {
+    const { name, value } = e.target;
+
+    setFormData((curState) => ({
+      ...curState,
+      [name]: value,
+    }));
+  }
+
   const registerHandler = async (_, formData) => {
     const userData = Object.fromEntries(formData);
 
-    if (Object.values(userData).some(el => el === '')) {
-      console.log('All fields are required!')
-      return;
-    }
-
-    if (userData['password'] !== userData['re-password']) {
-      console.log('Passwords don\'t match!')
-      return;
-    }
-
     try {
-      const authData = await register(userData.username, userData.email, userData.password);
+      await signupSchema.validate(userData, { abortEarly: false })
+
+      const authData = await register(
+        userData.username.trim(),
+        userData.email.trim(),
+        userData.password.trim(),
+      );
 
       userLogin(authData);
 
       navigate('/profile');
-    } catch (err) {
-      console.log(err.message)
+    } catch (validationErrors) {
+      const accErrors = validationErrors.inner.reduce((acc, err) => {
+        acc[err.path] = err.message;
+
+        return acc;
+      }, {});
+
+      setErrors(accErrors);
     }
   }
 
-  const [, registerAction, isPending] = useActionState(registerHandler, {
-    username: '',
-    email: '',
-    password: '',
-  });
+  const [, registerAction, isPending] = useActionState(registerHandler);
 
   return (
     <section className="flex max-w-[17.5em] flex-1 flex-col justify-center py-12">
@@ -56,7 +77,17 @@ export default function SignUp() {
             Username
           </label>
 
-          <AuthInput identifier="username" hint="Enter username here" />
+          <AuthInput
+            identifier="username"
+            hint="Enter username here"
+            inputValue={formData.username}
+            onTyping={inputChangeHandler}
+            error={errors.username}
+          />
+
+          {errors.username &&
+            <p className="error-msg">{errors.username}</p>
+          }
         </div>
 
         <div>
@@ -64,7 +95,17 @@ export default function SignUp() {
             Email
           </label>
 
-          <AuthInput identifier="email" hint="Enter email here" />
+          <AuthInput
+            identifier="email"
+            hint="Enter email here"
+            inputValue={formData.email}
+            onTyping={inputChangeHandler}
+            error={errors.email}
+          />
+
+          {errors.email &&
+            <p className="error-msg">{errors.email}</p>
+          }
         </div>
 
         <div>
@@ -72,15 +113,31 @@ export default function SignUp() {
             Password
           </label>
 
-          <AuthInput identifier="password" hint="Enter password here" />
+          <AuthInput
+            identifier="password"
+            hint="Enter password here"
+            error={errors.password}
+          />
+
+          {errors.password &&
+            <p className="error-msg">{errors.password}</p>
+          }
         </div>
 
         <div>
-          <label htmlFor="re-password" className="label-style">
+          <label htmlFor="rePassword" className="label-style">
             Repeat password
           </label>
 
-          <AuthInput identifier="re-password" hint="Enter repeated password here" />
+          <AuthInput
+            identifier="rePassword"
+            hint="Enter repeated password here"
+            error={errors.rePassword}
+          />
+
+          {errors.rePassword &&
+            <p className="error-msg">{errors.rePassword}</p>
+          }
         </div>
 
         <SubmitButton

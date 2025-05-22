@@ -9,13 +9,13 @@ export const signupSchema = Yup.object({
   email: Yup.string()
     .required('Email is required')
     .min(7, 'Email too short (min 7 chars)')
-    .max(21, 'Email too long (max 21 chars)')
+    .max(49, 'Email too long (max 49 chars)')
     .matches(/^[a-zA-Z0-9.-]+@[a-zA-Z0-9.-]+\.(bg|com|org|io)$/i, 'Invalid email format')
     .trim(),
   password: Yup.string()
     .required('Password is required')
     .min(8, 'Password too short (min 8 chars)')
-    .max(24, 'Password too long (max 24 chars)')
+    .max(16, 'Password too long (max 16 chars)')
     .trim(),
   rePassword: Yup.string()
     .oneOf([Yup.ref('password'), null], 'Passwords don\'t match')
