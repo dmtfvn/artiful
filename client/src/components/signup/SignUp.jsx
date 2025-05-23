@@ -1,5 +1,5 @@
 import { useActionState, useState } from 'react';
-import { Link, useNavigate } from 'react-router';
+import { Link } from 'react-router';
 
 import AuthInput from '../inputs/auth-input/AuthInput.jsx';
 import SubmitButton from '../buttons/submit-button/SubmitButton.jsx';
@@ -22,8 +22,6 @@ export default function SignUp() {
     rePassword: '',
   });
 
-  const navigate = useNavigate();
-
   const { register } = useRegister();
 
   const { userLogin } = useUserContext();
@@ -45,13 +43,11 @@ export default function SignUp() {
 
       const authData = await register(
         userData.username.trim(),
-        userData.email.trim(),
+        userData.email.toLowerCase().trim(),
         userData.password.trim(),
       );
 
       userLogin(authData);
-
-      navigate('/profile');
     } catch (validationErrors) {
       const accErrors = validationErrors.inner.reduce((acc, err) => {
         acc[err.path] = err.message;

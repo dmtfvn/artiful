@@ -41,6 +41,8 @@ Authenticated user will be able to:
 
 >*heroicons*
 
+>*Yup*
+
 **Used server:**
 >*SoftUni Practice Server* -:- REST service for educational purposes
 
