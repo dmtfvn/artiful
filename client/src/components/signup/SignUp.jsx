@@ -7,7 +7,7 @@ import SubmitButton from '../buttons/submit-button/SubmitButton.jsx';
 import { useRegister } from '../../api/authApi.js';
 import useUserContext from '../../hooks/useUserContext.js';
 
-import { signupSchema } from '../../schemas/authSchema.js';
+import { signupSchema } from '../../schemas/signupSchema.js';
 
 export default function SignUp() {
   const [formData, setFormData] = useState({
@@ -48,14 +48,18 @@ export default function SignUp() {
       );
 
       userLogin(authData);
-    } catch (validationErrors) {
-      const accErrors = validationErrors.inner.reduce((acc, err) => {
-        acc[err.path] = err.message;
+    } catch (error) {
+      if (error.name === 'ValidationError') {
+        const accErrors = error.inner.reduce((acc, err) => {
+          acc[err.path] = err.message;
 
-        return acc;
-      }, {});
+          return acc;
+        }, {});
 
-      setErrors(accErrors);
+        setErrors(accErrors);
+      } else {
+        setErrors({ general: 'Something went wrong, please try again' });
+      }
     }
   }
 
@@ -135,6 +139,10 @@ export default function SignUp() {
             <p className="error-msg">{errors.rePassword}</p>
           }
         </div>
+
+        {errors.general &&
+          <p className="error-msg text-center">{errors.general}</p>
+        }
 
         <SubmitButton
           label="Sign Up"
