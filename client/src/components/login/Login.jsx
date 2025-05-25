@@ -1,5 +1,5 @@
-import { useActionState } from 'react';
-import { Link, useNavigate } from 'react-router';
+import { useActionState, useState } from 'react';
+import { Link } from 'react-router';
 
 import AuthInput from '../inputs/auth-input/AuthInput.jsx';
 import SubmitButton from '../buttons/submit-button/SubmitButton.jsx';
@@ -8,7 +8,7 @@ import { useLogin } from '../../api/authApi.js';
 import useUserContext from '../../hooks/useUserContext.js';
 
 export default function Login() {
-  const navigate = useNavigate();
+  const [error, setError] = useState('');
 
   const { login } = useLogin();
 
@@ -17,19 +17,24 @@ export default function Login() {
   const loginHandler = async (_, formData) => {
     const userData = Object.fromEntries(formData);
 
-    if (Object.values(userData).some(el => el === '')) {
-      console.log('All fields are required!')
-      return;
-    }
-
     try {
-      const authData = await login(userData.email, userData.password);
+      if (Object.values(userData).some(el => el === '')) {
+        throw new Error('All fields are required');
+      }
+
+      const authData = await login(
+        userData.email.trim(),
+        userData.password.trim(),
+      );
 
       userLogin(authData);
-
-      navigate(-1);
     } catch (err) {
-      console.log(err.message)
+      if (err.message === 'Failed to fetch') {
+        setError('Something went wrong, please try again');
+        return;
+      }
+
+      setError(err.message);
     }
   }
 
@@ -50,7 +55,10 @@ export default function Login() {
             Email
           </label>
 
-          <AuthInput identifier="email" hint="Enter email here" />
+          <AuthInput
+            identifier="email"
+            hint="Enter email here"
+          />
         </div>
 
         <div>
@@ -58,8 +66,15 @@ export default function Login() {
             Password
           </label>
 
-          <AuthInput identifier="password" hint="Enter password here" />
+          <AuthInput
+            identifier="password"
+            hint="Enter password here"
+          />
         </div>
+
+        {error &&
+          <p className="error-msg text-center">{error}</p>
+        }
 
         <SubmitButton
           label="Log In"
