@@ -1,15 +1,15 @@
 export default function ImagePreviewInput({
   identifier,
   valueUrl,
-  onChangeUrl,
+  changeUrl,
 }) {
   return (
     <input
       id={identifier}
       type="text"
       name={identifier}
-      defaultValue={valueUrl}
-      onChange={onChangeUrl}
+      value={valueUrl}
+      onChange={changeUrl}
       placeholder="Paste image URL here"
       autoComplete="off"
       className="main-input-style"

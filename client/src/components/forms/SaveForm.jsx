@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect } from 'react';
 
 import MainInput from '../inputs/main-input/MainInput.jsx';
 import SubmitButton from '../buttons/submit-button/SubmitButton.jsx';
@@ -8,12 +8,15 @@ import useImagePreview from '../../hooks/useImagePreview.js';
 
 export default function SaveForm({
   art,
+  changeState,
+  errors,
   isPending,
-  actionEdit,
-  actionCreate,
+  onCreate,
+  onEdit,
 }) {
   const [
     imageUrl,
+    setImageUrl,
     preview,
     setPreview,
     imageError,
@@ -21,22 +24,15 @@ export default function SaveForm({
     inputChangeHandler,
   ] = useImagePreview(art.imageUrl);
 
-  const checkRef = useRef(null);
-
   useEffect(() => {
-    if (checkRef.current) {
-      checkRef.current.checked = art.check || false;
-    }
-  }, [art.check]);
-
-  useEffect(() => {
-    if (art.imageUrl && !preview) {
+    if (art.imageUrl) {
+      setImageUrl(art.imageUrl);
       setPreview(art.imageUrl);
     }
-  }, [art.imageUrl, preview, setPreview]);
+  }, [art.imageUrl, setImageUrl, setPreview]);
 
   return (
-    <form action={art._id ? actionEdit : actionCreate} className="space-y-9 p-4">
+    <form onSubmit={art._id ? onEdit : onCreate} className="space-y-9 p-4">
       <div className="border-1 border-stone-800 rounded-lg overflow-hidden">
         {preview && !imageError
           ?
@@ -53,9 +49,17 @@ export default function SaveForm({
 
         <ImagePreviewInput
           identifier="imageUrl"
-          valueUrl={imageUrl || art.imageUrl}
-          onChangeUrl={inputChangeHandler}
+          valueUrl={imageUrl}
+          changeUrl={inputChangeHandler}
         />
+
+        {errors.imageUrl &&
+          <p className="error-msg">{errors.imageUrl}</p>
+        }
+
+        {imageError &&
+          <p className="text-sm/6 text-red-500">Invalid image url</p>
+        }
       </div>
 
       <div>
@@ -63,7 +67,16 @@ export default function SaveForm({
           Art name
         </label>
 
-        <MainInput identifier="title" hint="Enter art name here" value={art.title} />
+        <MainInput
+          identifier="title"
+          hint="Enter art name here"
+          inputValue={art.title}
+          changeValue={changeState}
+        />
+
+        {errors.title &&
+          <p className="error-msg">{errors.title}</p>
+        }
       </div>
 
       <div>
@@ -71,7 +84,16 @@ export default function SaveForm({
           Art creator
         </label>
 
-        <MainInput identifier="creator" hint="Enter your alias here" value={art.creator} />
+        <MainInput
+          identifier="creator"
+          hint="Enter your alias here"
+          inputValue={art.creator}
+          changeValue={changeState}
+        />
+
+        {errors.creator &&
+          <p className="error-msg">{errors.creator}</p>
+        }
       </div>
 
       <label htmlFor="check-box" className="inline-flex items-center gap-2 text-white/65">
@@ -79,7 +101,8 @@ export default function SaveForm({
           id="check-box"
           name="check"
           type="checkbox"
-          ref={checkRef}
+          checked={art.check}
+          onChange={changeState}
           className="accent-gray-700 size-4"
         />
 
@@ -95,14 +118,20 @@ export default function SaveForm({
           id="text-area"
           name="depiction"
           placeholder="Share a word or two..."
-          defaultValue={art.depiction}
+          value={art.depiction}
+          onChange={changeState}
           className="min-h-[4.5em] main-input-style"
         ></textarea>
+
+        {errors.depiction &&
+          <p className="error-msg">{errors.depiction}</p>
+        }
       </div>
 
       <SubmitButton
         label={art._id ? "Edit" : "Create"}
         pending={isPending}
+        error={imageError}
         style="main-button-style"
       />
     </form>

@@ -1,8 +1,8 @@
 import { useState } from 'react';
 
-export default function useImagePreview(initialPreview = '') {
-  const [imageUrl, setImageUrl] = useState('');
-  const [preview, setPreview] = useState(initialPreview);
+export default function useImagePreview(state) {
+  const [imageUrl, setImageUrl] = useState(state);
+  const [preview, setPreview] = useState(state);
   const [imageError, setImageError] = useState(false);
 
   const imageErrorHandler = () => {
@@ -26,6 +26,7 @@ export default function useImagePreview(initialPreview = '') {
 
   return [
     imageUrl,
+    setImageUrl,
     preview,
     setPreview,
     imageError,

@@ -1,7 +1,8 @@
 export default function MainInput({
   identifier,
   hint,
-  value,
+  inputValue,
+  changeValue,
 }) {
   return (
     <input
@@ -10,7 +11,8 @@ export default function MainInput({
       name={identifier}
       placeholder={hint}
       autoComplete="off"
-      defaultValue={value}
+      value={inputValue}
+      onChange={changeValue}
       className="main-input-style"
     />
   );
