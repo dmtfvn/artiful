@@ -1,37 +1,51 @@
-import { useActionState } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router';
 
 import SaveForm from '../forms/SaveForm.jsx';
+import useArtFormState from '../../hooks/useArtFormState.js';
+import useErrorState from '../../hooks/useErrorState.js';
 
 import { useCreate } from '../../api/crudApi.js';
 import useUserContext from '../../hooks/useUserContext.js';
 
+import { artSchema } from '../../schemas/artSchema.js';
+
 export default function Create() {
+  const [pending, setPending] = useState(false);
+
+  const { formState, changeHandler } = useArtFormState();
+  const { errors, errorHandler } = useErrorState();
+
   const navigate = useNavigate();
 
   const { create } = useCreate();
 
   const { email } = useUserContext();
 
-  const createHandler = async (_, formData) => {
+  const createHandler = async (e) => {
+    e.preventDefault();
+
+    setPending(true);
+
+    const formData = new FormData(e.target);
     const artData = Object.fromEntries(formData);
 
     if (artData.check) {
       artData.email = email;
     }
 
-    await create(artData);
+    try {
+      await artSchema.validate(artData, { abortEarly: false });
 
-    navigate('/profile');
+      await create(artData);
+
+      navigate('/profile');
+    } catch (error) {
+      errorHandler(error);
+    } finally {
+      setPending(false);
+    }
   }
-
-  const [, actionCreate, isPending] = useActionState(createHandler, {
-    imageUrl: '',
-    title: '',
-    creator: '',
-    check: false,
-    depiction: '',
-  });
 
   return (
     <section className="section-wrapper">
@@ -44,9 +58,11 @@ export default function Create() {
       </h1>
 
       <SaveForm
-        art={{}}
-        isPending={isPending}
-        actionCreate={actionCreate}
+        art={formState}
+        changeState={changeHandler}
+        errors={errors}
+        isPending={pending}
+        onCreate={createHandler}
       />
     </section>
   );

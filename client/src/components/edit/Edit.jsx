@@ -1,41 +1,61 @@
-import { useActionState } from 'react';
+import { useEffect, useState } from 'react';
 import { Navigate, useNavigate, useParams } from 'react-router';
 
 import SaveForm from '../forms/SaveForm.jsx';
+import useArtFormState from '../../hooks/useArtFormState.js';
+import useErrorState from '../../hooks/useErrorState.js';
 import Spinner from '../spinner/Spinner.jsx';
 
 import { useArt, useEdit } from '../../api/crudApi.js';
 import useUserContext from '../../hooks/useUserContext.js';
 
-export default function Edit() {
-  const navigate = useNavigate();
+import { artSchema } from '../../schemas/artSchema.js';
 
-  const { edit } = useEdit();
+export default function Edit() {
+  const [pending, setPending] = useState(false);
 
   const { artId } = useParams();
   const { art, loading } = useArt(artId);
 
+  const navigate = useNavigate();
+
+  const { edit } = useEdit();
+
   const { _id, email } = useUserContext();
 
-  const editHandler = async (_, formData) => {
+  const { formState, changeHandler, setEditInitial } = useArtFormState();
+  const { errors, errorHandler } = useErrorState();
+
+  useEffect(() => {
+    if (art) {
+      setEditInitial(art);
+    }
+  }, [art, setEditInitial]);
+
+  const editHandler = async (e) => {
+    e.preventDefault();
+
+    setPending(true);
+
+    const formData = new FormData(e.target);
     const artData = Object.fromEntries(formData);
 
     if (artData.check) {
       artData.email = email;
     }
 
-    await edit(artId, artData);
+    try {
+      await artSchema.validate(artData, { abortEarly: false });
 
-    navigate(`/details/${artId}`);
+      await edit(artId, artData);
+
+      navigate(`/details/${artId}`);
+    } catch (error) {
+      errorHandler(error);
+    } finally {
+      setPending(false);
+    }
   }
-
-  const [, actionEdit, isPending] = useActionState(editHandler, {
-    imageUrl: '',
-    title: '',
-    creator: '',
-    check: false,
-    depiction: '',
-  });
 
   if (loading) {
     return <Spinner />;
@@ -58,9 +78,11 @@ export default function Edit() {
       </h1>
 
       <SaveForm
-        art={art}
-        isPending={isPending}
-        actionEdit={actionEdit}
+        art={formState}
+        changeState={changeHandler}
+        errors={errors}
+        isPending={pending}
+        onEdit={editHandler}
       />
     </section>
   );
