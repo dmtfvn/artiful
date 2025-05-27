@@ -31,6 +31,10 @@ export default function SaveForm({
     }
   }, [art.imageUrl, setImageUrl, setPreview]);
 
+  if (imageError) {
+    errors.imageUrl = '';
+  }
+
   return (
     <form onSubmit={art._id ? onEdit : onCreate} className="space-y-9 p-4">
       <div className="border-1 border-stone-800 rounded-lg overflow-hidden">
@@ -58,7 +62,7 @@ export default function SaveForm({
         }
 
         {imageError &&
-          <p className="text-sm/6 text-red-500">Invalid image url</p>
+          <p className="error-msg">Invalid image url</p>
         }
       </div>
 
@@ -127,6 +131,10 @@ export default function SaveForm({
           <p className="error-msg">{errors.depiction}</p>
         }
       </div>
+
+      {errors.general &&
+        <p className="error-msg text-center">{errors.general}</p>
+      }
 
       <SubmitButton
         label={art._id ? "Edit" : "Create"}

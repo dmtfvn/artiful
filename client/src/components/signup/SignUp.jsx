@@ -3,6 +3,7 @@ import { Link } from 'react-router';
 
 import AuthInput from '../inputs/auth-input/AuthInput.jsx';
 import SubmitButton from '../buttons/submit-button/SubmitButton.jsx';
+import useErrorState from '../../hooks/useErrorState.js';
 
 import { useRegister } from '../../api/authApi.js';
 import useUserContext from '../../hooks/useUserContext.js';
@@ -15,16 +16,11 @@ export default function SignUp() {
     email: '',
   });
 
-  const [errors, setErrors] = useState({
-    username: '',
-    email: '',
-    password: '',
-    rePassword: '',
-  });
-
   const { register } = useRegister();
 
   const { userLogin } = useUserContext();
+
+  const { errors, errorHandler } = useErrorState();
 
   const inputChangeHandler = (e) => {
     const { name, value } = e.target;
@@ -49,17 +45,7 @@ export default function SignUp() {
 
       userLogin(authData);
     } catch (error) {
-      if (error.name === 'ValidationError') {
-        const accErrors = error.inner.reduce((acc, err) => {
-          acc[err.path] = err.message;
-
-          return acc;
-        }, {});
-
-        setErrors(accErrors);
-      } else {
-        setErrors({ general: 'Something went wrong, please try again' });
-      }
+      errorHandler(error);
     }
   }
 

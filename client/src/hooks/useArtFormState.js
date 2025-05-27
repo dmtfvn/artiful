@@ -20,16 +20,13 @@ export default function useArtFormState() {
 
   const setEditInitial = useCallback((art) => {
     setFormState({
-      _createdOn: '',
-      _updatedOn: '',
-      _ownerId: '',
       _id: art._id || '',
-      check: art.check || false,
-      creator: art.creator || '',
-      depiction: art.depiction || '',
-      email: art.email || '',
       imageUrl: art.imageUrl || '',
       title: art.title || '',
+      creator: art.creator || '',
+      check: art.check || false,
+      email: art.email || '',
+      depiction: art.depiction || '',
     });
   }, []);
 

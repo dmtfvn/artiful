@@ -6,7 +6,7 @@ This repo contains a project for the course **JS React** @ **SoftUni**
 
 ### Course project defence:
 
->SPA about creating artistic cards, and building a collection.
+>SPA about creating artistic cards, and building a collection. The application is fully responsive and supports interaction based on the user type - guest or authenticated.
 
 <br>
 
