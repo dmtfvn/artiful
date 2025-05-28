@@ -31,16 +31,18 @@ export default function SignUp() {
     }));
   }
 
-  const registerHandler = async (_, formData) => {
-    const userData = Object.fromEntries(formData);
+  const registerHandler = async (_, data) => {
+    const userData = Object.fromEntries(data);
 
     try {
-      await signupSchema.validate(userData, { abortEarly: false })
+      const yupData = await signupSchema.validate(userData, {
+        abortEarly: false,
+      });
 
       const authData = await register(
-        userData.username.trim(),
-        userData.email.toLowerCase().trim(),
-        userData.password.trim(),
+        yupData.username,
+        yupData.email,
+        yupData.password,
       );
 
       userLogin(authData);
@@ -63,12 +65,15 @@ export default function SignUp() {
             Username
           </label>
 
-          <AuthInput
-            identifier="username"
-            hint="Enter username here"
-            inputValue={formData.username}
-            onTyping={inputChangeHandler}
-            error={errors.username}
+          <input
+            id="username"
+            name="username"
+            type="text"
+            value={formData.username}
+            onChange={inputChangeHandler}
+            autoComplete="off"
+            placeholder="Enter username here"
+            className={`auth-style ${errors.username ? "outline-red-400" : ''}`.trim()}
           />
 
           {errors.username &&
@@ -81,12 +86,15 @@ export default function SignUp() {
             Email
           </label>
 
-          <AuthInput
-            identifier="email"
-            hint="Enter email here"
-            inputValue={formData.email}
-            onTyping={inputChangeHandler}
-            error={errors.email}
+          <input
+            id="email"
+            name="email"
+            type="text"
+            value={formData.email}
+            onChange={inputChangeHandler}
+            autoComplete="off"
+            placeholder="Enter email here"
+            className={`auth-style ${errors.email ? "outline-red-400" : ''}`.trim()}
           />
 
           {errors.email &&

@@ -44,7 +44,7 @@ Authenticated user will be able to:
 >*Yup*
 
 **Used server:**
->*SoftUni Practice Server* -:- REST service for educational purposes
+>[*SoftUni Practice Server*](https://github.com/softuni-practice-server/softuni-practice-server) -:- REST service for educational purposes
 
 <br>
 

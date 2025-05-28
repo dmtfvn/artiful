@@ -1,12 +1,7 @@
 import { useState } from 'react';
 
 export default function useErrorState() {
-  const [errors, setErrors] = useState({
-    imageUrl: '',
-    title: '',
-    creator: '',
-    depiction: '',
-  });
+  const [errors, setErrors] = useState({});
 
   const errorHandler = (error) => {
     if (error.name === 'ValidationError') {
@@ -18,7 +13,7 @@ export default function useErrorState() {
 
       setErrors(accErrors);
     } else {
-      setErrors({ general: 'Something went wrong, please try again' });
+      setErrors({ general: error.message });
     }
   }
 
