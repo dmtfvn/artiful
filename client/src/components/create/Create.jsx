@@ -35,9 +35,11 @@ export default function Create() {
     }
 
     try {
-      await artSchema.validate(artData, { abortEarly: false });
+      const yupData = await artSchema.validate(artData, {
+        abortEarly: false,
+      });
 
-      await create(artData);
+      await create(yupData);
 
       navigate('/profile');
     } catch (error) {

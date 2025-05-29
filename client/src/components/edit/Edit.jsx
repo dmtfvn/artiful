@@ -45,9 +45,11 @@ export default function Edit() {
     }
 
     try {
-      await artSchema.validate(artData, { abortEarly: false });
+      const yupData = await artSchema.validate(artData, {
+        abortEarly: false,
+      });
 
-      await edit(artId, artData);
+      await edit(artId, yupData);
 
       navigate(`/details/${artId}`);
     } catch (error) {

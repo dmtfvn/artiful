@@ -72,7 +72,7 @@ export default function SaveForm({
         </label>
 
         <MainInput
-          identifier="title"
+          label="title"
           hint="Enter art name here"
           inputValue={art.title}
           changeValue={changeState}
@@ -89,7 +89,7 @@ export default function SaveForm({
         </label>
 
         <MainInput
-          identifier="creator"
+          label="creator"
           hint="Enter your alias here"
           inputValue={art.creator}
           changeValue={changeState}

@@ -1,14 +1,14 @@
 export default function MainInput({
-  identifier,
+  label,
   hint,
   inputValue,
   changeValue,
 }) {
   return (
     <input
-      id={identifier}
+      id={label}
       type="text"
-      name={identifier}
+      name={label}
       placeholder={hint}
       autoComplete="off"
       value={inputValue}
