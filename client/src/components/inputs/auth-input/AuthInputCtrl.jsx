@@ -1,20 +1,15 @@
-export default function AuthInput({
-  identifier,
+export default function AuthInputCtrl({
+  label,
   hint,
+  error,
   inputValue,
   onTyping,
-  error,
 }) {
   return (
     <input
-      id={identifier}
-      type={identifier === "password" || identifier === "rePassword"
-        ?
-        "password"
-        :
-        'text'
-      }
-      name={identifier}
+      id={label}
+      type="text"
+      name={label}
       placeholder={hint}
       autoComplete="off"
       value={inputValue}

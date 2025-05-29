@@ -1,7 +1,7 @@
 import { useActionState, useState } from 'react';
 import { Link } from 'react-router';
 
-import AuthInput from '../inputs/auth-input/AuthInput.jsx';
+import AuthInputUnctrl from '../inputs/auth-input/AuthInputUnctrl.jsx';
 import SubmitButton from '../buttons/submit-button/SubmitButton.jsx';
 
 import { useLogin } from '../../api/authApi.js';
@@ -29,19 +29,11 @@ export default function Login() {
 
       userLogin(authData);
     } catch (err) {
-      if (err.message === 'Failed to fetch') {
-        setError('Something went wrong, please try again');
-        return;
-      }
-
       setError(err.message);
     }
   }
 
-  const [, loginAction, isPending] = useActionState(loginHandler, {
-    email: '',
-    password: '',
-  });
+  const [, loginAction, isPending] = useActionState(loginHandler);
 
   return (
     <section className="flex max-w-[17.5em] flex-1 flex-col justify-center py-12">
@@ -55,8 +47,8 @@ export default function Login() {
             Email
           </label>
 
-          <AuthInput
-            identifier="email"
+          <AuthInputUnctrl
+            label="email"
             hint="Enter email here"
           />
         </div>
@@ -66,8 +58,8 @@ export default function Login() {
             Password
           </label>
 
-          <AuthInput
-            identifier="password"
+          <AuthInputUnctrl
+            label="password"
             hint="Enter password here"
           />
         </div>

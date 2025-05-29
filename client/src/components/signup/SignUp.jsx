@@ -1,7 +1,8 @@
 import { useActionState, useState } from 'react';
 import { Link } from 'react-router';
 
-import AuthInput from '../inputs/auth-input/AuthInput.jsx';
+import AuthInputCtrl from '../inputs/auth-input/AuthInputCtrl.jsx';
+import AuthInputUnctrl from '../inputs/auth-input/AuthInputUnctrl.jsx';
 import SubmitButton from '../buttons/submit-button/SubmitButton.jsx';
 import useErrorState from '../../hooks/useErrorState.js';
 
@@ -11,7 +12,7 @@ import useUserContext from '../../hooks/useUserContext.js';
 import { signupSchema } from '../../schemas/signupSchema.js';
 
 export default function SignUp() {
-  const [formData, setFormData] = useState({
+  const [formState, setFormState] = useState({
     username: '',
     email: '',
   });
@@ -25,14 +26,14 @@ export default function SignUp() {
   const inputChangeHandler = (e) => {
     const { name, value } = e.target;
 
-    setFormData((curState) => ({
+    setFormState((curState) => ({
       ...curState,
       [name]: value,
     }));
   }
 
-  const registerHandler = async (_, data) => {
-    const userData = Object.fromEntries(data);
+  const registerHandler = async (_, formData) => {
+    const userData = Object.fromEntries(formData);
 
     try {
       const yupData = await signupSchema.validate(userData, {
@@ -65,15 +66,12 @@ export default function SignUp() {
             Username
           </label>
 
-          <input
-            id="username"
-            name="username"
-            type="text"
-            value={formData.username}
-            onChange={inputChangeHandler}
-            autoComplete="off"
-            placeholder="Enter username here"
-            className={`auth-style ${errors.username ? "outline-red-400" : ''}`.trim()}
+          <AuthInputCtrl
+            label="username"
+            hint="Enter username here"
+            error={errors.username}
+            inputValue={formState.username}
+            onTyping={inputChangeHandler}
           />
 
           {errors.username &&
@@ -86,15 +84,12 @@ export default function SignUp() {
             Email
           </label>
 
-          <input
-            id="email"
-            name="email"
-            type="text"
-            value={formData.email}
-            onChange={inputChangeHandler}
-            autoComplete="off"
-            placeholder="Enter email here"
-            className={`auth-style ${errors.email ? "outline-red-400" : ''}`.trim()}
+          <AuthInputCtrl
+            label="email"
+            hint="Enter email here"
+            error={errors.email}
+            inputValue={formState.email}
+            onTyping={inputChangeHandler}
           />
 
           {errors.email &&
@@ -107,8 +102,8 @@ export default function SignUp() {
             Password
           </label>
 
-          <AuthInput
-            identifier="password"
+          <AuthInputUnctrl
+            label="password"
             hint="Enter password here"
             error={errors.password}
           />
@@ -123,8 +118,8 @@ export default function SignUp() {
             Repeat password
           </label>
 
-          <AuthInput
-            identifier="rePassword"
+          <AuthInputUnctrl
+            label="rePassword"
             hint="Enter repeated password here"
             error={errors.rePassword}
           />
