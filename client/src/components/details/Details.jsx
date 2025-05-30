@@ -8,25 +8,22 @@ import Spinner from '../spinner/Spinner.jsx';
 import ConfirmAction from '../modals/ConfirmAction.jsx';
 
 import { useArt, useDelete } from '../../api/crudApi.js';
-import { useAddLike, useLike, useLikeCount, useRemoveLike } from '../../api/likeApi.js';
+import { useLike } from '../../api/likeApi.js';
+import useToggleLike from '../../hooks/useToggleLike.js';
 import useUserContext from '../../hooks/useUserContext.js';
 
 export default function Details() {
   const navigate = useNavigate();
 
   const [open, setOpen] = useState(false);
-  const [heart, setHeart] = useState('');
-  const [inProcess, setInProcess] = useState(false);
 
-  const { _id, accessToken } = useUserContext();
+  const { _id } = useUserContext();
   const { artId } = useParams();
 
   const { art, loading } = useArt(artId);
   const { artLike } = useLike(_id, artId);
-  const { likeCount, setLikeCount } = useLikeCount(artId);
+  const { heart, setHeart, inProcess, likeCount, toggleHandler } = useToggleLike(artId);
 
-  const { like } = useAddLike();
-  const { unlike } = useRemoveLike();
   const { del } = useDelete();
 
   const isOwner = _id === art._ownerId;
@@ -37,56 +34,7 @@ export default function Details() {
     }
 
     setHeart(artLike[0]._id)
-  }, [artLike]);
-
-  const addLikeHandler = async () => {
-    if (!accessToken) {
-      navigate('/login');
-      return;
-    }
-
-    setInProcess(true);
-    setLikeCount(likeCount + 1);
-
-    try {
-      const res = await like({ artId });
-
-      setHeart(res._id);
-    } catch (err) {
-      console.log(err.message)
-      setLikeCount(likeCount - 1);
-    } finally {
-      setInProcess(false);
-    }
-  }
-
-  const removeLikeHandler = async () => {
-    setInProcess(true);
-    setLikeCount(likeCount - 1);
-
-    try {
-      await unlike(heart);
-
-      setHeart('');
-    } catch (err) {
-      console.log(err.message)
-      setLikeCount(likeCount + 1);
-    } finally {
-      setInProcess(false);
-    }
-  }
-
-  const toggleHandler = () => {
-    if (inProcess) {
-      return;
-    }
-
-    if (heart) {
-      removeLikeHandler();
-    } else {
-      addLikeHandler();
-    }
-  }
+  }, [artLike, setHeart]);
 
   const deleteHandler = async () => {
     await del(artId);
