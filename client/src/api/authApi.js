@@ -1,9 +1,11 @@
 import { useEffect } from 'react';
 
 import useUserContext from '../hooks/useUserContext.js';
-import request from '../utils/request.js';
 
-const url = 'http://localhost:3030/users';
+import request from '../utils/request.js';
+import { baseUrl } from '../utils/consts.js';
+
+const url = `${baseUrl}/users`;
 
 export const useLogin = () => {
   const login = async (email, password) => {

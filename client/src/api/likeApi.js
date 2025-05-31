@@ -1,9 +1,11 @@
 import { useEffect, useState } from 'react';
 
 import useUserContext from '../hooks/useUserContext.js';
-import request from '../utils/request.js';
 
-const url = 'http://localhost:3030/data/likes';
+import request from '../utils/request.js';
+import { baseUrl } from '../utils/consts.js';
+
+const url = `${baseUrl}/data/likes`;
 
 export const useLike = (_id, artId) => {
   const [artLike, setArtLike] = useState([]);
