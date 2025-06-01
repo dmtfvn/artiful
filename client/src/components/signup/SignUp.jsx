@@ -47,8 +47,8 @@ export default function SignUp() {
       );
 
       userLogin(authData);
-    } catch (error) {
-      errorHandler(error);
+    } catch (err) {
+      errorHandler(err);
     }
   }
 

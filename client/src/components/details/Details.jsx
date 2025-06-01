@@ -6,6 +6,7 @@ import { HeartIcon as HeartSolid } from '@heroicons/react/24/solid';
 
 import Spinner from '../spinner/Spinner.jsx';
 import ConfirmAction from '../modals/ConfirmAction.jsx';
+import ServiceErrorMsg from '../service-error-msg/ServiceErrorMsg.jsx';
 
 import { useArt, useDelete } from '../../api/crudApi.js';
 import { useLike } from '../../api/likeApi.js';
@@ -20,7 +21,7 @@ export default function Details() {
   const { _id } = useUserContext();
   const { artId } = useParams();
 
-  const { art, loading } = useArt(artId);
+  const { art, loading, noFetch } = useArt(artId);
   const { artLike } = useLike(_id, artId);
   const { heart, setHeart, inProcess, likeCount, toggleHandler } = useToggleLike(artId);
 
@@ -53,10 +54,9 @@ export default function Details() {
         onDelete={deleteHandler}
       />
 
-      {loading
-        ?
-        <Spinner />
-        :
+      {loading && <Spinner />}
+
+      {!loading && !noFetch &&
         <>
           <h1 className="text-center text-3xl font-semibold text-gradient-l my-4 word-wrap">
             {art.title}
@@ -115,6 +115,12 @@ export default function Details() {
             </section>
           </div>
         </>
+      }
+
+      {!loading && noFetch &&
+        <ServiceErrorMsg
+          message={noFetch}
+        />
       }
     </section>
   );

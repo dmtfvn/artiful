@@ -29,6 +29,7 @@ export const useLike = (_id, artId) => {
 export const useUserLikes = () => {
   const [userLikes, setUserLikes] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [noFetch, setNoFetch] = useState('');
 
   const { _id } = useUserContext();
 
@@ -43,6 +44,11 @@ export const useUserLikes = () => {
     request.get(`${url}?${searchParams.toString()}`)
       .then(data => {
         setUserLikes(data);
+      })
+      .catch(err => {
+        setNoFetch(err.message);
+      })
+      .finally(() => {
         setLoading(false);
       });
   }, [_id]);
@@ -50,6 +56,7 @@ export const useUserLikes = () => {
   return {
     userLikes,
     loading,
+    noFetch,
   };
 }
 

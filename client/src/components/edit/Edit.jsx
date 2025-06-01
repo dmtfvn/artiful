@@ -52,8 +52,8 @@ export default function Edit() {
       await edit(artId, yupData);
 
       navigate(`/details/${artId}`);
-    } catch (error) {
-      errorHandler(error);
+    } catch (err) {
+      errorHandler(err);
     } finally {
       setPending(false);
     }

@@ -4,13 +4,14 @@ import SearchForm from '../forms/SearchForm.jsx';
 import SimpleCard from '../cards/SimpleCard.jsx';
 import Spinner from '../spinner/Spinner.jsx';
 import EmptySpaceMsg from '../empty-space-msg/EmptySpaceMsg.jsx';
+import ServiceErrorMsg from '../service-error-msg/ServiceErrorMsg.jsx';
 
 import { useArts } from '../../api/crudApi.js';
 
 export default function Gallery() {
-  const { arts, setArts, loading } = useArts();
-
   const [noResult, setNoResult] = useState(false);
+
+  const { arts, setArts, loading, noFetch } = useArts();
 
   return (
     <section className="section-wrapper-grid">
@@ -41,9 +42,15 @@ export default function Gallery() {
           />
         }
 
-        {!noResult && !arts.length && !loading &&
+        {!noResult && !noFetch && !arts.length && !loading &&
           <EmptySpaceMsg
             message="This place is supposed to be full of art"
+          />
+        }
+
+        {!loading && noFetch &&
+          <ServiceErrorMsg
+            message={noFetch}
           />
         }
       </div>

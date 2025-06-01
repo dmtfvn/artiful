@@ -10,6 +10,7 @@ const url = `${baseUrl}/data/arts`;
 export const useArts = () => {
   const [arts, setArts] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [noFetch, setNoFetch] = useState('');
 
   useEffect(() => {
     setLoading(true);
@@ -17,6 +18,11 @@ export const useArts = () => {
     request.get(url)
       .then(data => {
         setArts(data);
+      })
+      .catch(err => {
+        setNoFetch(err.message);
+      })
+      .finally(() => {
         setLoading(false);
       });
   }, []);
@@ -25,12 +31,14 @@ export const useArts = () => {
     arts,
     setArts,
     loading,
+    noFetch,
   };
 }
 
 export const useArt = (id) => {
   const [art, setArt] = useState({});
   const [loading, setLoading] = useState(true);
+  const [noFetch, setNoFetch] = useState('');
 
   useEffect(() => {
     setLoading(true);
@@ -38,6 +46,11 @@ export const useArt = (id) => {
     request.get(`${url}/${id}`)
       .then(data => {
         setArt(data);
+      })
+      .catch(err => {
+        setNoFetch(err.message);
+      })
+      .finally(() => {
         setLoading(false);
       });
   }, [id]);
@@ -45,6 +58,7 @@ export const useArt = (id) => {
   return {
     art,
     loading,
+    noFetch,
   };
 }
 

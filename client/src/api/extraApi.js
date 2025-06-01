@@ -10,9 +10,11 @@ const url = `${baseUrl}/data/arts`;
 export const useMostLiked = () => {
   const [mostLiked, setMostLiked] = useState([]);
   const [processing, setProcessing] = useState(true);
+  const [noFetch, setNoFetch] = useState('');
 
   useEffect(() => {
     setProcessing(true);
+    setNoFetch('');
 
     const searchParams = new URLSearchParams({
       load: '_likes=artId:likes',
@@ -33,6 +35,11 @@ export const useMostLiked = () => {
         artsWithLikes.sort((a, b) => b._likesCount - a._likesCount);
 
         setMostLiked(artsWithLikes);
+      })
+      .catch(err => {
+        setNoFetch(err.message);
+      })
+      .finally(() => {
         setProcessing(false);
       });
   }, []);
@@ -40,15 +47,18 @@ export const useMostLiked = () => {
   return {
     mostLiked,
     processing,
+    mostLikedError: noFetch,
   };
 }
 
 export const useLatest = () => {
   const [latest, setLatest] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [noFetch, setNoFetch] = useState(false);
 
   useEffect(() => {
     setLoading(true);
+    setNoFetch(false);
 
     const searchParams = new URLSearchParams({
       sortBy: '_createdOn desc',
@@ -59,6 +69,11 @@ export const useLatest = () => {
     request.get(`${url}?${searchParams.toString()}`)
       .then(data => {
         setLatest(data);
+      })
+      .catch(err => {
+        setNoFetch(err.message);
+      })
+      .finally(() => {
         setLoading(false);
       });
   }, []);
@@ -66,6 +81,7 @@ export const useLatest = () => {
   return {
     latest,
     loading,
+    latestError: noFetch,
   };
 }
 
@@ -74,6 +90,7 @@ export const useCreated = () => {
 
   const [created, setCreated] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [noFetch, setNoFetch] = useState(false);
 
   useEffect(() => {
     setLoading(true);
@@ -86,6 +103,11 @@ export const useCreated = () => {
     request.get(`${url}?${searchParams.toString()}`)
       .then(data => {
         setCreated(data);
+      })
+      .catch(err => {
+        setNoFetch(err.message);
+      })
+      .finally(() => {
         setLoading(false);
       });
   }, [_id]);
@@ -93,6 +115,7 @@ export const useCreated = () => {
   return {
     created,
     loading,
+    noFetch,
   };
 }
 

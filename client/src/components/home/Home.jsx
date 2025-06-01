@@ -2,12 +2,13 @@ import SimpleCard from '../cards/SimpleCard.jsx';
 
 import Spinner from '../spinner/Spinner.jsx';
 import EmptySpaceMsg from '../empty-space-msg/EmptySpaceMsg.jsx';
+import ServiceErrorMsg from '../service-error-msg/ServiceErrorMsg.jsx';
 
 import { useLatest, useMostLiked } from '../../api/extraApi.js';
 
 export default function Home() {
-  const { latest, loading } = useLatest();
-  const { mostLiked, processing } = useMostLiked();
+  const { latest, loading, latestError } = useLatest();
+  const { mostLiked, processing, mostLikedError } = useMostLiked();
 
   return (
     <section className="flex flex-col items-center max-w-[43em] w-full">
@@ -40,9 +41,15 @@ export default function Home() {
               <SimpleCard {...mostLiked[0]} />
             }
 
-            {!processing && !mostLiked[0]?._likes.length &&
-              < EmptySpaceMsg
+            {!processing && !mostLikedError && !mostLiked[0]?._likes.length &&
+              <EmptySpaceMsg
                 message="For the art with the most likes"
+              />
+            }
+
+            {!processing && mostLikedError &&
+              <ServiceErrorMsg
+                message={mostLikedError}
               />
             }
           </div>
@@ -65,9 +72,15 @@ export default function Home() {
               />
             ))}
 
-            {!loading && !latest.length &&
+            {!loading && !latestError && !latest.length &&
               <EmptySpaceMsg
                 message="The latest three additions will show up here"
+              />
+            }
+
+            {!loading && latestError &&
+              <ServiceErrorMsg
+                message={latestError}
               />
             }
           </div>

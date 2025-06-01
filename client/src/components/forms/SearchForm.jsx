@@ -4,6 +4,7 @@ import { MagnifyingGlassIcon } from '@heroicons/react/24/outline';
 
 import SearchInput from '../inputs/search-input/SearchInput.jsx';
 import CustomSelect from '../select/CustomSelect.jsx';
+import ServiceErrorMsg from '../service-error-msg/ServiceErrorMsg.jsx';
 
 import { useSearch } from '../../api/extraApi.js';
 
@@ -14,6 +15,7 @@ export default function SearchForm({
   const [selectOption, setSelectOption] = useState({});
   const [inputValue, setInputValue] = useState('');
   const [criteria, setCriteria] = useState(false);
+  const [noSearch, setNoSearch] = useState('');
 
   const { search } = useSearch();
 
@@ -24,16 +26,20 @@ export default function SearchForm({
       return;
     }
 
-    const searchResult = await search(option, inputValue);
+    try {
+      const searchResult = await search(option, inputValue);
 
-    if (!searchResult.length) {
-      artState([]);
-      searchState(true);
-      return;
+      if (!searchResult.length) {
+        artState([]);
+        searchState(true);
+        return;
+      }
+
+      artState(searchResult);
+      searchState(false);
+    } catch (err) {
+      setNoSearch(err.message);
     }
-
-    artState(searchResult);
-    searchState(false);
   }
 
   const [, actionSearch, isPending] = useActionState(searchHandler);
@@ -66,6 +72,12 @@ export default function SearchForm({
       <div className="absolute bottom-0 left-0 right-0 flex justify-center">
         {isPending && criteria &&
           <BarLoader color="rgb(68, 64, 60)" width={420} />
+        }
+
+        {noSearch &&
+          <ServiceErrorMsg
+            message={noSearch}
+          />
         }
       </div>
     </div>

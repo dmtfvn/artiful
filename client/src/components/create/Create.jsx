@@ -42,8 +42,8 @@ export default function Create() {
       await create(yupData);
 
       navigate('/profile');
-    } catch (error) {
-      errorHandler(error);
+    } catch (err) {
+      errorHandler(err);
     } finally {
       setPending(false);
     }
