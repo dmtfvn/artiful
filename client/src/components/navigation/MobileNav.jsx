@@ -13,7 +13,7 @@ export default function MobileNav({
   return (
     <Dialog open={state} onClose={setMobile} className="md:hidden">
       <DialogPanel
-        className="fixed inset-y-0 left-0 z-50 w-full overflow-y-auto bg-black p-6 sm:max-w-xs"
+        className="fixed inset-y-0 left-0 z-50 w-full overflow-y-auto bg-black p-6 msm:max-w-xs"
       >
         <button
           type="button"
