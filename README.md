@@ -50,7 +50,15 @@ Authenticated user will be able to:
 
 ### Check project current state:
 
->Open a terminal, navigate to server folder, and execute the command:
+>Create a folder at a convenient location. Use your preferred IDE to open a terminal, navigate to the newly created folder, and execute the command:
+
+```
+git clone https://github.com/dmtfvn/artiful.git .
+```
+
+<br>
+
+>Open a new terminal, navigate to server folder, and execute the command:
 
 ```
 node server.js
@@ -58,8 +66,15 @@ node server.js
 
 <br>
 
->Open a terminal, navigate to client folder, and execute the command:
+>Open a new terminal, navigate to client folder, and execute the command:
 
+```
+npm i
+```
 ```
 npm run dev
 ```
+
+<br>
+
+>Start the project by Ctrl + Left Mouse Click (on Windows), or ⌘ + Left Mouse Click (on Mac) on the localhost link
