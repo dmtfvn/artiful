@@ -20,8 +20,10 @@ export const useLogin = () => {
 }
 
 export const useRegister = () => {
-  const register = (username, email, password) => {
-    return request.post(`${url}/register`, { username, email, password });
+  const register = async (username, email, password) => {
+    const result = await request.post(`${url}/register`, { username, email, password });
+
+    return result;
   }
 
   return {
@@ -33,10 +35,6 @@ export const useLogout = () => {
   const { accessToken, userLogout } = useUserContext();
 
   useEffect(() => {
-    if (!accessToken) {
-      return;
-    }
-
     request.get(`${url}/logout`, undefined, accessToken)
       .finally(() => {
         userLogout();
@@ -44,6 +42,6 @@ export const useLogout = () => {
   }, [accessToken, userLogout]);
 
   return {
-    isLoggedOut: !!accessToken,
+    isLoggedOut: true,
   };
 }
