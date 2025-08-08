@@ -3,7 +3,7 @@
 }
 
 @utility header-nav-link {
-  @apply px-4 py-1.5 rounded-md bg-black/25 hover:bg-black/55;
+  @apply text-stone-500 px-4 py-1.5 rounded-md bg-black/25 hover:bg-black/55;
 }
 
 @utility mobile-nav-link {

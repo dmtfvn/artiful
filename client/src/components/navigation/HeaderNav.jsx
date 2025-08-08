@@ -44,7 +44,7 @@ export default function HeaderNav({
           }
         </section>
 
-        <section className="flex-center">
+        <section className="flex items-center">
           {token
             ?
             <Link to="/logout" className="header-nav-link">Logout</Link>
