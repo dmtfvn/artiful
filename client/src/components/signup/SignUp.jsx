@@ -26,8 +26,8 @@ export default function SignUp() {
   const inputChangeHandler = (e) => {
     const { name, value } = e.target;
 
-    setFormState((curState) => ({
-      ...curState,
+    setFormState((prev) => ({
+      ...prev,
       [name]: value,
     }));
   }

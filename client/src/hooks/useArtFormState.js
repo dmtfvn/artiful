@@ -12,8 +12,8 @@ export default function useArtFormState() {
   const changeHandler = (e) => {
     const { name, type, value, checked } = e.target;
 
-    setFormState((curState) => ({
-      ...curState,
+    setFormState((prev) => ({
+      ...prev,
       [name]: type === 'checkbox' ? checked : value,
     }));
   }
