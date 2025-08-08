@@ -1,22 +1,23 @@
 import { UserContext } from '../../contexts/UserContext.js';
 
 import usePersistState from '../../hooks/usePersistState.js';
+import { storageKey } from '../../utils/consts.js';
 
 export default function UserProvider({
   children,
 }) {
-  const [user, setUser] = usePersistState('auth', {});
+  const { state, setPersistState } = usePersistState(storageKey);
 
   const userLogin = (authData) => {
-    setUser(authData);
+    setPersistState(authData);
   }
 
   const userLogout = () => {
-    setUser({});
+    setPersistState({});
   }
 
   return (
-    <UserContext.Provider value={{ ...user, userLogin, userLogout }}>
+    <UserContext.Provider value={{ ...state, userLogin, userLogout }}>
       {children}
     </UserContext.Provider>
   );

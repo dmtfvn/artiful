@@ -1,30 +1,26 @@
 import { useState } from 'react';
 
-export default function usePersistState(storageKey, curState) {
-  const [state, setState] = useState(() => {
-    const storageData = localStorage.getItem(storageKey);
+import { storageKey } from '../utils/consts.js';
 
-    if (typeof curState === 'function') {
-      return curState();
-    }
+export default function usePersistState(key) {
+  const [state, setState] = useState(() => {
+    const storageData = localStorage.getItem(key);
 
     const stateData = JSON.parse(storageData);
 
     return stateData;
   });
 
-  const setPersistState = (val) => {
-    const data = (typeof val === 'function') ? val(state) : val;
-
+  const setPersistState = (data) => {
     const persistData = JSON.stringify(data);
 
-    localStorage.setItem('auth', persistData);
+    localStorage.setItem(storageKey, persistData);
 
     setState(data);
   }
 
-  return [
+  return {
     state,
     setPersistState,
-  ];
+  };
 }
