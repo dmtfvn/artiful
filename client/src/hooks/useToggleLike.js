@@ -26,7 +26,7 @@ export default function useToggleLike(artId) {
     setLikeCount(likeCount + 1);
 
     try {
-      const res = await like({ artId });
+      const res = await like(artId);
 
       setHeart(res._id);
     } catch (err) {

@@ -84,7 +84,7 @@ export const useAddLike = () => {
   const { accessToken } = useUserContext();
 
   const like = (artId) => {
-    return request.post(url, artId, accessToken);
+    return request.post(url, { artId }, accessToken);
   }
 
   return {
