@@ -38,11 +38,15 @@ export default function Details() {
   }, [artLike, setHeart]);
 
   const deleteHandler = async () => {
-    await del(artId);
+    try {
+      await del(artId);
 
-    setOpen(false);
+      setOpen(false);
 
-    navigate('/profile');
+      navigate('/profile');
+    } catch (err) {
+      console.log(err.message)
+    }
   }
 
   return (
