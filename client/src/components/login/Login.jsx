@@ -42,7 +42,7 @@ export default function Login() {
       </h1>
 
       <form action={loginAction} className="space-y-9">
-        <div>
+        <div className="flex flex-col">
           <label htmlFor="email" className="label-style">
             Email
           </label>
@@ -53,7 +53,7 @@ export default function Login() {
           />
         </div>
 
-        <div>
+        <div className="flex flex-col">
           <label htmlFor="password" className="label-style">
             Password
           </label>

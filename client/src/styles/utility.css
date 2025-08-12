@@ -39,7 +39,7 @@
 }
 
 @utility auth-form {
-  @apply flex flex-col flex-1 max-w-[17.5em] py-12;
+  @apply flex flex-col max-w-[17.5em] w-full py-12;
 }
 
 @utility auth-form-title {
@@ -51,7 +51,7 @@
 }
 
 @utility section-wrapper {
-  @apply flex flex-col flex-1 max-w-[25em] shadow-card-slot rounded-2xl my-20;
+  @apply flex flex-col max-w-[25em] w-full shadow-card-slot rounded-2xl my-20;
 }
 
 @utility section-wrapper-grid {

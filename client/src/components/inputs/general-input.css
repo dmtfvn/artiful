@@ -1,5 +1,5 @@
 @layer components {
   .general-input-style {
-    @apply bg-black/20 w-full rounded-md px-3 py-1.5 text-base text-[var(--color-yt-ish)] outline-1 -outline-offset-1 outline-stone-800 placeholder:text-gray-700 focus:outline-2 focus:-outline-offset-2 focus:outline-stone-600
+    @apply bg-black/20 w-full rounded-md text-base text-[var(--color-yt-ish)] outline-1 -outline-offset-1 outline-stone-800 placeholder:text-gray-700 focus:outline-2 focus:-outline-offset-2 focus:outline-stone-600 px-3 py-1.5
   }
 }

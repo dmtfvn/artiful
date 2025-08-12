@@ -1,5 +1,5 @@
 @layer components {
   .search-input-style {
-    @apply bg-black/30 w-full rounded-md pl-3 py-1.5 text-base text-gray-500 placeholder:text-gray-700 focus:outline-2 focus:-outline-offset-2 focus:outline-stone-800
+    @apply bg-black/30 w-full rounded-md text-base text-gray-500 placeholder:text-gray-700 focus:outline-2 focus:-outline-offset-2 focus:outline-stone-800 pl-3 py-1.5
   }
 }

@@ -61,7 +61,7 @@ export default function SignUp() {
       </h1>
 
       <form action={registerAction} className="space-y-9">
-        <div>
+        <div className="flex flex-col">
           <label htmlFor="username" className="label-style">
             Username
           </label>
@@ -79,7 +79,7 @@ export default function SignUp() {
           }
         </div>
 
-        <div>
+        <div className="flex flex-col">
           <label htmlFor="email" className="label-style">
             Email
           </label>
@@ -97,7 +97,7 @@ export default function SignUp() {
           }
         </div>
 
-        <div>
+        <div className="flex flex-col">
           <label htmlFor="password" className="label-style">
             Password
           </label>
@@ -113,7 +113,7 @@ export default function SignUp() {
           }
         </div>
 
-        <div>
+        <div className="flex flex-col">
           <label htmlFor="rePassword" className="label-style">
             Repeat password
           </label>

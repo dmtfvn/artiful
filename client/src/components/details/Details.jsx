@@ -66,7 +66,7 @@ export default function Details() {
             {art.title}
           </h1>
 
-          <div>
+          <div className="flex flex-col">
             <img src={art.imageUrl} alt={art.title} className="rounded-xl" />
 
             <section className={`flex ${isOwner ? 'justify-between' : 'justify-center'} my-4`}>
