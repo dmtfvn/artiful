@@ -12,8 +12,8 @@ export default function Header() {
   const [mobileState, setMobileState] = useState(false);
 
   return (
-    <header className="flex-center flex-col mb-10">
-      <div className="flex-center max-w-[12em] h-auto py-5">
+    <header className="flex-c-col mb-10">
+      <div className="flex justify-center max-w-[12em] h-auto py-5">
         <Link to="/">
           <img src="/logo.png" alt="artiful-logo" />
         </Link>

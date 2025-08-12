@@ -13,7 +13,7 @@ export default function MainInput({
       autoComplete="off"
       value={inputValue}
       onChange={changeValue}
-      className="main-input-style"
+      className="general-input-style"
     />
   );
 }

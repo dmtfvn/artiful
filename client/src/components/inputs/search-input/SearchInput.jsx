@@ -17,13 +17,14 @@ export default function SearchInput({
         onInput={(e) => setSearchValue(e.target.value)}
         placeholder="Type here to search"
         autoComplete="off"
-        className={`search-style ${searchValue ? 'pr-10.5' : 'pr-3'}`}
+        className={`search-input-style ${searchValue ? 'pr-10.5' : 'pr-3'}`}
       />
 
       {searchValue &&
         <button
           onClick={clearInput}
-          className="absolute right-3 top-1/2 transform -translate-y-1/2 text-zinc-600 hover:bg-stone-900 rounded-sm cursor-pointer">
+          className="absolute right-3 top-1/2 transform -translate-y-1/2 text-zinc-600 hover:bg-stone-900 rounded-sm cursor-pointer"
+        >
           <XMarkIcon className="size-6" />
         </button>
       }

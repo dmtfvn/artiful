@@ -15,7 +15,7 @@ export default function SearchForm({
   const [selectOption, setSelectOption] = useState({});
   const [inputValue, setInputValue] = useState('');
   const [criteria, setCriteria] = useState(false);
-  const [noSearch, setNoSearch] = useState('');
+  const [error, setError] = useState('');
 
   const { search } = useSearch();
 
@@ -38,15 +38,15 @@ export default function SearchForm({
       artState(searchResult);
       searchState(false);
     } catch (err) {
-      setNoSearch(err.message);
+      setError(err.message);
     }
   }
 
   const [, actionSearch, isPending] = useActionState(searchHandler);
 
   return (
-    <div className="relative max-w-[29em] w-full flex flex-col self-center">
-      <form action={actionSearch} className="flex-center flex-wrap mt-20 mb-4 gap-11">
+    <div className="relative flex flex-col w-full">
+      <form action={actionSearch} className="flex justify-center flex-wrap mt-20 mb-4 gap-11">
         <div className="flex max-w-3xs w-full">
           <SearchInput
             searchValue={inputValue}
@@ -55,11 +55,9 @@ export default function SearchForm({
 
           <button
             disabled={isPending}
-            className={`flex-center -ml-1.5 bg-stone-800 rounded-r-md text-zinc-600 ${isPending ? 'cursor-not-allowed' : 'cursor-pointer'} hover:text-zinc-400 px-2 py-1.5 z-5`}
+            className={`flex-center bg-stone-800 rounded-r-md text-zinc-600 ${isPending ? 'cursor-not-allowed' : 'cursor-pointer'} hover:text-zinc-400 -ml-1.5 px-2 py-1.5 z-5`}
           >
-            <MagnifyingGlassIcon
-              className="size-6"
-            />
+            <MagnifyingGlassIcon className="size-6" />
           </button>
         </div>
 
@@ -74,9 +72,9 @@ export default function SearchForm({
           <BarLoader color="rgb(68, 64, 60)" width={420} />
         }
 
-        {noSearch &&
+        {error &&
           <ServiceErrorMsg
-            message={noSearch}
+            message={error}
           />
         }
       </div>

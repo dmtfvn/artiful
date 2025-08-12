@@ -55,8 +55,8 @@ export default function SignUp() {
   const [, registerAction, isPending] = useActionState(registerHandler);
 
   return (
-    <section className="flex max-w-[17.5em] flex-1 flex-col justify-center py-12">
-      <h1 className="mb-10 text-center text-2xl/9 font-bold text-sky-800">
+    <section className="auth-form">
+      <h1 className="auth-form-title">
         Create a new account
       </h1>
 
@@ -136,11 +136,11 @@ export default function SignUp() {
         <SubmitButton
           label="Sign Up"
           pending={isPending}
-          style="submit-style"
+          style="submit-button-style"
         />
       </form>
 
-      <p className="mt-10 text-center text-sm/6 text-gray-500">
+      <p className="auth-form-switch">
         Already have an account?{' '}
         <Link to="/login" className="font-semibold text-sky-600">
           Log In

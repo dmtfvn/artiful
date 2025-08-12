@@ -2,16 +2,28 @@
   @apply flex justify-center items-center;
 }
 
+@utility flex-c-col {
+  @apply flex flex-col items-center;
+}
+
 @utility header-nav-link {
   @apply text-stone-500 px-4 py-1.5 rounded-md bg-black/25 hover:bg-black/55;
 }
 
 @utility mobile-nav-link {
-  @apply -mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-[var(--color-gy-ish)] hover:bg-stone-900;
+  @apply block rounded-lg text-base/7 font-semibold text-[var(--color-gy-ish)] hover:bg-stone-900 -mx-3 px-3 py-2;
 }
 
 @utility profile-link {
-  @apply text-black/75 text-center rounded-lg hover:text-white/55 px-3 py-2;
+  @apply text-black/75 text-center rounded-lg hover:text-white/75 px-3 py-2;
+}
+
+@utility create-edit-symbol {
+  @apply text-4xl text-center text-gradient-l pt-4;
+}
+
+@utility create-edit-title {
+  @apply text-2xl text-center font-semibold text-gradient-l my-4;
 }
 
 @utility text-gradient-l {
@@ -26,8 +38,20 @@
   @apply absolute inset-0 bg-gradient-to-r from-sky-200 via-orange-200 to-amber-200 opacity-0 group-hover:opacity-100 transition-opacity duration-500;
 }
 
+@utility auth-form {
+  @apply flex flex-col flex-1 max-w-[17.5em] py-12;
+}
+
+@utility auth-form-title {
+  @apply text-2xl/9 text-center font-bold text-sky-800 mb-10;
+}
+
+@utility auth-form-switch {
+  @apply text-sm/6 text-center text-gray-500 mt-10;
+}
+
 @utility section-wrapper {
-  @apply flex max-w-[25em] flex-1 flex-col shadow-card-slot rounded-2xl justify-center my-20;
+  @apply flex flex-col flex-1 max-w-[25em] shadow-card-slot rounded-2xl my-20;
 }
 
 @utility section-wrapper-grid {
@@ -46,18 +70,18 @@
   @apply text-sm/6 text-red-400;
 }
 
-@utility select-style {
-  @apply max-w-[9.5em] w-full p-1.5 outline-none text-stone-500 border-y-2 border-stone-800 hover:bg-black/35 focus:bg-black/35 cursor-pointer;
-}
-
 @utility txt-shadow {
   @apply text-shadow-xs text-shadow-stone-800;
 }
 
 @utility icon-wrapper-style {
-  @apply m-2 p-2 rounded-full bg-black/20 cursor-pointer hover:bg-black/40;
+  @apply rounded-full bg-black/20 hover:bg-black/40 cursor-pointer m-2 p-2;
 }
 
 @utility icon-style {
   @apply max-w-full aspect-[1/1] w-8 text-gray-700;
+}
+
+@utility action-button-style {
+  @apply inline-flex justify-center w-full rounded-md text-sm font-semibold px-3 py-2;
 }

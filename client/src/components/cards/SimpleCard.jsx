@@ -7,7 +7,7 @@ export default function SimpleCard({
 }) {
   return (
     <section className="flex flex-col max-w-[12em] w-full h-[17em]">
-      <h1 className="w-full text-center whitespace-nowrap truncate overflow-hidden text-[var(--color-yt-ish)] px-3">
+      <h1 className="w-full text-center truncate text-[var(--color-yt-ish)] px-3">
         {title}
       </h1>
 

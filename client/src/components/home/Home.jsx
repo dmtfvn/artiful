@@ -11,8 +11,8 @@ export default function Home() {
   const { mostLiked, processing, mostLikedError } = useMostLiked();
 
   return (
-    <section className="flex flex-col items-center max-w-[43em] w-full">
-      <div className="flex-center flex-col max-w-[40em] w-full mt-20 px-5">
+    <section className="flex-c-col max-w-[43em] w-full">
+      <div className="flex-c-col max-w-[40em] w-full mt-20 px-5">
         <p className="text-4xl text-gradient-l text-center font-light">
           Eager to show your art, but wonder where to put it?
         </p>

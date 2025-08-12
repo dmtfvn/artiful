@@ -14,7 +14,7 @@ export default function AuthInputCtrl({
       autoComplete="off"
       value={inputValue}
       onChange={onTyping}
-      className={`auth-style ${error ? "outline-red-400" : ''}`.trim()}
+      className={`auth-input-style ${error ? "outline-red-400" : ''}`.trim()}
     />
   );
 }

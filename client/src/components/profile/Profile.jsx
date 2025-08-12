@@ -10,14 +10,14 @@ export default function Profile() {
 
   return (
     <section className="section-wrapper-grid">
-      <div className="flex-center flex-col gap-7.5">
-        <h1 className="text-4xl text-center text-black/75 font-bold pt-20 txt-shadow">
+      <div className="flex-c-col gap-7.5">
+        <h1 className="text-4xl text-center text-black/75 font-bold txt-shadow pt-20">
           Welcome to your personal space, <span className="word-wrap">{username}</span>
         </h1>
 
         <Link
           to="/profile/create"
-          className="relative text-black/75 bg-stone-800 px-5 py-2 rounded-lg cursor-pointer overflow-hidden group"
+          className="relative text-black/75 bg-stone-800 rounded-lg overflow-hidden group cursor-pointer px-5 py-2"
         >
           <span className="hover-gradient"></span>
           <span className="relative z-10">Create an Art</span>

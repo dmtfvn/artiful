@@ -9,7 +9,7 @@
 
 @import './components/inputs/search-input/search-input.css';
 @import './components/inputs/auth-input/auth-input.css';
-@import './components/inputs/main-input.css';
+@import './components/inputs/general-input.css';
 
 @import './components/buttons/submit-button/submit-button.css';
 @import './components/buttons/main-button.css';

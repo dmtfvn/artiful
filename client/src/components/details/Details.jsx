@@ -62,7 +62,7 @@ export default function Details() {
 
       {!loading && !noFetch &&
         <>
-          <h1 className="text-center text-3xl font-semibold text-gradient-l my-4 word-wrap">
+          <h1 className="text-3xl text-center font-semibold text-gradient-l word-wrap my-4">
             {art.title}
           </h1>
 
@@ -94,7 +94,7 @@ export default function Details() {
               }
             </section>
 
-            <section className="flex flex-col gap-4 mt-20">
+            <section className="flex flex-col mt-20 gap-4">
               <p className="text-stone-700">
                 Artist: <span className="text-stone-400 font-bold word-wrap">{art.creator}</span>
               </p>
@@ -106,10 +106,10 @@ export default function Details() {
               }
 
               {art.depiction &&
-                <p className="text-stone-600 mt-8 word-wrap">&#x275E; {art.depiction} &#x275E;</p>
+                <p className="text-stone-600 word-wrap mt-8">&#x275E; {art.depiction} &#x275E;</p>
               }
 
-              <div className="flex flex-col items-center mt-4">
+              <div className="flex-c-col mt-4">
                 <p className="text-stone-700">Likes</p>
 
                 <p className="text-stone-700">

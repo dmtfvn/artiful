@@ -36,8 +36,8 @@ export default function Login() {
   const [, loginAction, isPending] = useActionState(loginHandler);
 
   return (
-    <section className="flex max-w-[17.5em] flex-1 flex-col justify-center py-12">
-      <h1 className="mb-10 text-center text-2xl/9 font-bold text-sky-800">
+    <section className="auth-form">
+      <h1 className="auth-form-title">
         Sign in your account
       </h1>
 
@@ -71,11 +71,11 @@ export default function Login() {
         <SubmitButton
           label="Log In"
           pending={isPending}
-          style="submit-style"
+          style="submit-button-style"
         />
       </form>
 
-      <p className="mt-10 text-center text-sm/6 text-gray-500">
+      <p className="auth-form-switch">
         Don&rsquo;t have an account?{' '}
         <Link to="/signup" className="font-semibold text-sky-600">
           Sign Up here

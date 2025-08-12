@@ -10,7 +10,7 @@ export default function AuthInputUnctrl({
       name={label}
       placeholder={hint}
       autoComplete="off"
-      className={`auth-style ${error ? "outline-red-400" : ''}`.trim()}
+      className={`auth-input-style ${error ? "outline-red-400" : ''}`.trim()}
     />
   );
 }

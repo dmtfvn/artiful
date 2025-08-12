@@ -36,7 +36,10 @@ export default function SaveForm({
   }
 
   return (
-    <form onSubmit={art._id ? onEdit : onCreate} className="space-y-9 p-4">
+    <form
+      onSubmit={art._id ? onEdit : onCreate}
+      className="space-y-9 p-4"
+    >
       <div className="border-1 border-stone-800 rounded-lg overflow-hidden">
         {preview && !imageError
           ?
@@ -46,7 +49,7 @@ export default function SaveForm({
         }
       </div>
 
-      <div>
+      <div className="flex flex-col">
         <label htmlFor="imageUrl" className="label-style">
           Image url
         </label>
@@ -66,7 +69,7 @@ export default function SaveForm({
         }
       </div>
 
-      <div>
+      <div className="flex flex-col">
         <label htmlFor="title" className="label-style">
           Art name
         </label>
@@ -83,7 +86,7 @@ export default function SaveForm({
         }
       </div>
 
-      <div>
+      <div className="flex flex-col">
         <label htmlFor="creator" className="label-style">
           Art creator
         </label>
@@ -100,7 +103,7 @@ export default function SaveForm({
         }
       </div>
 
-      <label htmlFor="check-box" className="inline-flex items-center gap-2 text-white/65">
+      <div className="flex items-center gap-2">
         <input
           id="check-box"
           name="check"
@@ -110,8 +113,10 @@ export default function SaveForm({
           className="accent-gray-700 size-4"
         />
 
-        Include your email
-      </label>
+        <label htmlFor="check-box" className="text-stone-400">
+          Include your email
+        </label>
+      </div>
 
       <div className="flex flex-col">
         <label htmlFor="text-area" className="label-style">
@@ -124,7 +129,7 @@ export default function SaveForm({
           placeholder="Share a word or two..."
           value={art.depiction}
           onChange={changeState}
-          className="min-h-[4.5em] main-input-style"
+          className="general-input-style min-h-[4.5em]"
         ></textarea>
 
         {errors.depiction &&

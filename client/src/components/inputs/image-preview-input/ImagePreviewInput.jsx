@@ -12,7 +12,7 @@ export default function ImagePreviewInput({
       onChange={changeUrl}
       placeholder="Paste image URL here"
       autoComplete="off"
-      className="main-input-style"
+      className="general-input-style"
     />
   );
 }

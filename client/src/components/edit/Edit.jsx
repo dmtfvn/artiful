@@ -71,11 +71,11 @@ export default function Edit() {
 
   return (
     <section className="section-wrapper">
-      <p className="text-center text-4xl pt-4 text-gradient-l">
+      <p className="create-edit-symbol">
         &#10022;
       </p>
 
-      <h1 className="text-center text-2xl font-semibold text-gradient-l my-4">
+      <h1 className="create-edit-title">
         Edit your masterpiece
       </h1>
 

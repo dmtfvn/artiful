@@ -29,10 +29,10 @@ import './App.css';
 function App() {
   return (
     <UserProvider>
-      <div className="min-h-screen flex-center flex-col px-5">
+      <div className="min-h-screen flex-c-col px-5">
         <Header />
 
-        <main className="flex-center grow w-full">
+        <main className="flex justify-center grow w-full">
           <Routes>
             <Route index element={<Home />} />
             <Route path="/gallery" element={<Gallery />} />

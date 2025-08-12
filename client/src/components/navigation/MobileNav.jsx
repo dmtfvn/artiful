@@ -17,13 +17,13 @@ export default function MobileNav({
       >
         <button
           type="button"
-          className="flex justify-self-end p-1 text-[var(--color-gy-ish)] hover:bg-stone-900 rounded-sm cursor-pointer"
           onClick={() => setMobile(false)}
+          className="flex justify-self-end p-1 text-[var(--color-gy-ish)] hover:bg-stone-900 rounded-sm cursor-pointer"
         >
           <XMarkIcon aria-hidden="true" className="size-6" />
         </button>
 
-        <div className="flex flex-col py-6 divide-y divide-stone-800">
+        <div className="flex flex-col pt-6 divide-y divide-stone-800">
           <section className="pb-6">
             {token
               ?

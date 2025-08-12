@@ -22,9 +22,9 @@ export default function ConfirmAction({
         <div className="flex-center min-h-full text-center p-4 sm:mr-[15px]">
           <DialogPanel
             transition
-            className="relative transform overflow-hidden rounded-xl transition-all data-closed:translate-y-4 data-closed:opacity-0 data-enter:duration-200 data-enter:ease-out data-leave:duration-200 data-leave:ease-in max-w-[24em] w-full mx-auto bg-gradient-to-r from-stone-800 via-neutral-900 to-stone-800"
+            className="relative transform rounded-xl transition-all data-closed:translate-y-4 data-closed:opacity-0 data-enter:duration-200 data-enter:ease-out data-leave:duration-200 data-leave:ease-in max-w-[24em] w-full mx-auto bg-gradient-to-r from-stone-800 via-neutral-900 to-stone-800"
           >
-            <div className="flex-center flex-col p-4 gap-4">
+            <div className="flex-c-col p-4 gap-4">
               <div className="flex-center size-12 shrink-0 rounded-full bg-red-100">
                 <ExclamationTriangleIcon aria-hidden="true" className="size-6 text-red-600" />
               </div>
@@ -44,7 +44,7 @@ export default function ConfirmAction({
               <button
                 type="submit"
                 disabled={isPending}
-                className={`inline-flex w-full justify-center rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-xs hover:bg-red-500 ${isPending ? 'cursor-not-allowed opacity-50' : 'cursor-pointer'}`}
+                className={`action-button-style text-white bg-red-600 hover:bg-red-500 ${isPending ? 'cursor-not-allowed opacity-50' : 'cursor-pointer'}`}
               >
                 Delete
               </button>
@@ -53,7 +53,7 @@ export default function ConfirmAction({
                 type="button"
                 data-autofocus
                 onClick={() => change(false)}
-                className="inline-flex w-full justify-center rounded-md px-3 py-2 text-sm font-semibold text-stone-600 shadow-xs ring-1 ring-stone-600 ring-inset hover:text-white hover:ring-white cursor-pointer"
+                className="action-button-style text-stone-600 hover:text-white ring-1 ring-inset ring-stone-600 hover:ring-white cursor-pointer"
               >
                 Cancel
               </button>
